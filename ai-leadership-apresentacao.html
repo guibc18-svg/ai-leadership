@@ -121,6 +121,20 @@ h3{font-size:19px;font-weight:700;margin-bottom:6px}
 .er-t span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:3px}
 .er-m{font-size:16px;color:var(--dim);text-align:center}
 .er-m b{display:block;color:var(--amarelo);font-weight:700}
+.er-t .mv{display:block;font-size:16px;font-weight:600;color:var(--alerta);margin-top:6px}
+.cd.reord{outline:2px dashed rgba(255,220,109,.75);outline-offset:-3px}
+.jt{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.jr{display:grid;grid-template-columns:120px 1fr 176px 128px;border-bottom:1px solid var(--line)}
+.jr:last-child{border-bottom:0}
+.jr>div{padding:16px 18px}
+.jr-d{border-right:1px solid var(--line);background:rgba(255,255,255,.02);font-size:19px;font-weight:700}
+.jr-d span{display:block;font-size:16px;color:var(--dim2);font-weight:400}
+.jr-t{border-right:1px solid var(--line);font-size:17px;line-height:1.35}
+.jr-l{border-right:1px solid var(--line);font-size:17px;font-weight:700;color:var(--laranja)}
+.jr-l span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:3px}
+.jr-v{font-size:16px;font-weight:700;text-align:center}
+.jr.une{background:rgba(255,160,26,.07)} .jr.une .jr-v{color:var(--amarelo)}
+.jr.nao .jr-v{color:var(--dim2)} .jr.fora{opacity:.6} .jr.fora .jr-v{color:var(--dim2)}
 .er.ko{background:rgba(255,252,244,.05)} .er.ko .cod{color:var(--creme)}
 .er.ck{background:rgba(255,220,109,.07)}
 
@@ -172,6 +186,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
     <button class="on" data-t="pan" onclick="go('pan')">Panorama</button>
     <button data-t="eme" onclick="go('eme')">Ementa</button>
     <button data-t="cal" onclick="go('cal')">Calendário</button>
+    <button data-t="jou" onclick="go('jou')">AI Journey</button>
     <button data-t="pro" onclick="go('pro')">Professores</button>
     <button data-t="age" onclick="go('age')">Agenda</button>
   </nav>
@@ -365,61 +380,61 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
         <div class="er-c"><div class="cod">EC 01</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">14/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">Perímetro e influência: liderar sem crachá</div>
-        <div class="er-m">M1</div>
+        <div class="er-m">consome M1</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 01</div><div class="fmt">hands on</div></div>
         <div class="er-d">21/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">Faça em 20 minutos o que hoje te toma 6 horas</div>
-        <div class="er-m">M1<b>Capítulo 1</b></div>
+        <div class="er-m">consome M1<b>Capítulo 1</b></div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">EC 02</div><div class="fmt">conversa + Q&amp;A</div></div>
         <div class="er-d">28/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">O trabalho de ser humano<span>com Piero Franceschi</span></div>
-        <div class="er-m">M2</div>
+        <div class="er-m">consome M2</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">05/10<span>segunda · 19h–21h</span></div>
-        <div class="er-t">Do mapa ao alvo</div>
-        <div class="er-m">M3<b>Capítulo 2</b></div>
+        <div class="er-t">Cultura AI First: seu time usando IA todo dia<span class="mv">↻ era 09/11 · o AI Journey pede "Cultura AI First" nesta data</span></div>
+        <div class="er-m">consome M5</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
         <div class="er-d">13/10<span>terça · 19h–21h</span></div>
-        <div class="er-t">Quem faz o quê quando a IA entra</div>
-        <div class="er-m">M4</div>
+        <div class="er-t">Do mapa ao alvo<span class="mv">↻ era 05/10 · deslocado pelo EC 05</span></div>
+        <div class="er-m">consome M3<b>Capítulo 2</b></div>
       </div>
       <div class="er ck">
         <div class="er-c"><div class="cod">CHECK</div><div class="fmt">checkpoint</div></div>
         <div class="er-d">19/10<span>segunda · 19h–21h</span></div>
         <div class="er-t">Checkpoint<span>Sem conteúdo novo. Desbloqueia antes da construção</span></div>
-        <div class="er-m">M4</div>
+        <div class="er-m">consome M4</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 03</div><div class="fmt">hands on</div></div>
         <div class="er-d">26/10<span>segunda · 19h–21h</span></div>
         <div class="er-t">Seu primeiro agente conectado à operação real</div>
-        <div class="er-m">M4<b>Capítulo 3</b></div>
+        <div class="er-m">consome M4<b>Capítulo 3</b></div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">03/11<span>terça · 19h–21h</span></div>
-        <div class="er-t">O acordo com o time</div>
-        <div class="er-m">M5</div>
+        <div class="er-t">Quem faz o quê quando a IA entra<span>Absorve o tópico de ROI</span><span class="mv">↻ era 13/10 · o AI Journey pede ROI nesta data</span></div>
+        <div class="er-m">consome M4</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">09/11<span>segunda · 19h–21h</span></div>
-        <div class="er-t">Cultura AI First: seu time usando IA todo dia</div>
-        <div class="er-m">M5</div>
+        <div class="er-t">O acordo com o time<span class="mv">↻ era 03/11 · deslocado pelo EC 03</span></div>
+        <div class="er-m">consome M5</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 04</div><div class="fmt">hands on</div></div>
         <div class="er-d">16/11<span>segunda · 19h–21h</span></div>
         <div class="er-t">As regras do jogo + fechamento</div>
-        <div class="er-m">M5<b>Capítulo 4</b></div>
+        <div class="er-m">consome M5<b>Capítulo 4</b></div>
       </div>
     </div>
   </div>
@@ -444,12 +459,12 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
         <div class="mo">
           <div class="mo-h">Outubro 2026</div>
           <div class="dow"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
-          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd "><b>2</b></div><div class="cd "><b>3</b></div><div class="cd "><b>4</b></div><div class="cd ses"><b>5</b><span class="cl">HO 02</span></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd "><b>9</b></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd fer"><b>12</b><span class="cl">feriado</span></div><div class="cd ses mov"><b>13</b><span class="cl">EC 03</span></div><div class="cd "><b>14</b></div><div class="cd "><b>15</b></div><div class="cd "><b>16</b></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd ck"><b>19</b><span class="cl">Check</span></div><div class="cd "><b>20</b></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd ses"><b>26</b><span class="cl">HO 03</span></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd "><b>31</b></div><div class="cd out"></div></div>
+          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd "><b>2</b></div><div class="cd "><b>3</b></div><div class="cd "><b>4</b></div><div class="cd ses reord"><b>5</b><span class="cl">EC 05</span></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd "><b>9</b></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd fer"><b>12</b><span class="cl">feriado</span></div><div class="cd ses mov reord"><b>13</b><span class="cl">HO 02</span></div><div class="cd "><b>14</b></div><div class="cd "><b>15</b></div><div class="cd "><b>16</b></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd ck"><b>19</b><span class="cl">Check</span></div><div class="cd "><b>20</b></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd ses"><b>26</b><span class="cl">HO 03</span></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd "><b>31</b></div><div class="cd out"></div></div>
         </div>
         <div class="mo">
           <div class="mo-h">Novembro 2026</div>
           <div class="dow"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
-          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd fer"><b>2</b><span class="cl">feriado</span></div><div class="cd ses mov"><b>3</b><span class="cl">EC 04</span></div><div class="cd "><b>4</b></div><div class="cd "><b>5</b></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd ses"><b>9</b><span class="cl">EC 05</span></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd "><b>12</b></div><div class="cd "><b>13</b></div><div class="cd "><b>14</b></div><div class="cd fer"><b>15</b><span class="cl">feriado</span></div><div class="cd ses"><b>16</b><span class="cl">HO 04</span></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd "><b>19</b></div><div class="cd fer"><b>20</b><span class="cl">feriado</span></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd "><b>26</b></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div></div>
+          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd fer"><b>2</b><span class="cl">feriado</span></div><div class="cd ses mov reord"><b>3</b><span class="cl">EC 03</span></div><div class="cd "><b>4</b></div><div class="cd "><b>5</b></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd ses reord"><b>9</b><span class="cl">EC 04</span></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd "><b>12</b></div><div class="cd "><b>13</b></div><div class="cd "><b>14</b></div><div class="cd fer"><b>15</b><span class="cl">feriado</span></div><div class="cd ses"><b>16</b><span class="cl">HO 04</span></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd "><b>19</b></div><div class="cd fer"><b>20</b><span class="cl">feriado</span></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd "><b>26</b></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div></div>
         </div>
     </div>
     <div class="leg">
@@ -457,6 +472,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
       <div class="lg"><span class="sw" style="background:rgba(255,160,26,.6)"></span>Encontro que conta presença</div>
       <div class="lg"><span class="sw" style="background:rgba(255,220,109,.45)"></span>Checkpoint</div>
       <div class="lg"><span class="sw" style="background:rgba(255,160,26,.6);box-shadow:inset 0 0 0 2px #FF7A6B"></span>Movido para terça por feriado na segunda</div>
+      <div class="lg"><span class="sw" style="background:rgba(255,220,109,.3);outline:2px dashed rgba(255,220,109,.75);outline-offset:-2px"></span>Reordenado pelo AI Journey</div>
       <div class="lg"><span class="sw" style="background:rgba(255,122,107,.14)"></span>Feriado</div>
     </div>
   </div>
@@ -474,61 +490,61 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
         <div class="er-c"><div class="cod">EC 01</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">14/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">Perímetro e influência: liderar sem crachá</div>
-        <div class="er-m">M1</div>
+        <div class="er-m">consome M1</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 01</div><div class="fmt">hands on</div></div>
         <div class="er-d">21/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">Faça em 20 minutos o que hoje te toma 6 horas</div>
-        <div class="er-m">M1<b>Capítulo 1</b></div>
+        <div class="er-m">consome M1<b>Capítulo 1</b></div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">EC 02</div><div class="fmt">conversa + Q&amp;A</div></div>
         <div class="er-d">28/09<span>segunda · 19h–21h</span></div>
         <div class="er-t">O trabalho de ser humano<span>com Piero Franceschi</span></div>
-        <div class="er-m">M2</div>
+        <div class="er-m">consome M2</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">05/10<span>segunda · 19h–21h</span></div>
-        <div class="er-t">Do mapa ao alvo</div>
-        <div class="er-m">M3<b>Capítulo 2</b></div>
+        <div class="er-t">Cultura AI First: seu time usando IA todo dia<span class="mv">↻ era 09/11 · o AI Journey pede "Cultura AI First" nesta data</span></div>
+        <div class="er-m">consome M5</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
         <div class="er-d">13/10<span>terça · 19h–21h</span></div>
-        <div class="er-t">Quem faz o quê quando a IA entra</div>
-        <div class="er-m">M4</div>
+        <div class="er-t">Do mapa ao alvo<span class="mv">↻ era 05/10 · deslocado pelo EC 05</span></div>
+        <div class="er-m">consome M3<b>Capítulo 2</b></div>
       </div>
       <div class="er ck">
         <div class="er-c"><div class="cod">CHECK</div><div class="fmt">checkpoint</div></div>
         <div class="er-d">19/10<span>segunda · 19h–21h</span></div>
         <div class="er-t">Checkpoint<span>Sem conteúdo novo. Desbloqueia antes da construção</span></div>
-        <div class="er-m">M4</div>
+        <div class="er-m">consome M4</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 03</div><div class="fmt">hands on</div></div>
         <div class="er-d">26/10<span>segunda · 19h–21h</span></div>
         <div class="er-t">Seu primeiro agente conectado à operação real</div>
-        <div class="er-m">M4<b>Capítulo 3</b></div>
+        <div class="er-m">consome M4<b>Capítulo 3</b></div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">03/11<span>terça · 19h–21h</span></div>
-        <div class="er-t">O acordo com o time</div>
-        <div class="er-m">M5</div>
+        <div class="er-t">Quem faz o quê quando a IA entra<span>Absorve o tópico de ROI</span><span class="mv">↻ era 13/10 · o AI Journey pede ROI nesta data</span></div>
+        <div class="er-m">consome M4</div>
       </div>
-      <div class="er ">
-        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
+      <div class="er mv">
+        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
         <div class="er-d">09/11<span>segunda · 19h–21h</span></div>
-        <div class="er-t">Cultura AI First: seu time usando IA todo dia</div>
-        <div class="er-m">M5</div>
+        <div class="er-t">O acordo com o time<span class="mv">↻ era 03/11 · deslocado pelo EC 03</span></div>
+        <div class="er-m">consome M5</div>
       </div>
       <div class="er ">
         <div class="er-c"><div class="cod">HO 04</div><div class="fmt">hands on</div></div>
         <div class="er-d">16/11<span>segunda · 19h–21h</span></div>
         <div class="er-t">As regras do jogo + fechamento</div>
-        <div class="er-m">M5<b>Capítulo 4</b></div>
+        <div class="er-m">consome M5<b>Capítulo 4</b></div>
       </div>
     </div>
     <div class="note">
@@ -544,6 +560,128 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
     <div class="note warn">
       <b>O programa fecha em 10 semanas corridas</b>, sem pular nenhuma. Isso mantém a duração de
       "10 semanas" que a ementa e as mensagens da régua já anunciam.
+    </div>
+  </div>
+</section>
+
+<!-- ══════ AI JOURNEY ══════ -->
+<section class="pane" id="p-jou">
+  <div class="eyebrow">Guia · AI Journey</div>
+  <h1>Os encontros do Leadership<br>valendo como <span>mentoria estratégica</span></h1>
+  <p class="lead">
+    Quem está no AI Journey entra automaticamente no AI Leadership. Para a pessoa não ter dois
+    compromissos, os encontros do Leadership passam a valer como a <b>mentoria estratégica</b> da
+    Turma 04. As três mentorias que caem na nossa janela já estavam marcadas em datas que também são
+    slots do Leadership, então <b>nenhuma data mudou</b>: mudou a ordem dos encontros dentro das datas.
+  </p>
+
+  <div class="blk">
+    <div class="g4">
+      <div class="stat"><div class="v">3</div><div class="l">Mentorias na janela</div><div class="d">Entre 08/09 e 16/11, na Turma 04</div></div>
+      <div class="stat"><div class="v o">2</div><div class="l">Unificam</div><div class="d">Uma sessão servindo os dois públicos</div></div>
+      <div class="stat"><div class="v">4</div><div class="l">Encontros reordenados</div><div class="d">2 pelo Journey, 2 por efeito cascata</div></div>
+      <div class="stat"><div class="v o">0</div><div class="l">Datas alteradas</div><div class="d">Os 11 slots seguem os mesmos</div></div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>A correlação, mentoria por mentoria</h2>
+      <p class="sub">Todas as mentorias estratégicas da Turma 04 até o fim do Leadership. O veredito olha o conteúdo, não o título.</p></div>
+    <div class="jt">
+      <div class="jr" style="background:rgba(255,255,255,.03)">
+        <div class="jr-d" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;background:none">DATA</div>
+        <div class="jr-t" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">TEMA NA TURMA 04</div>
+        <div class="jr-l" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">NO LEADERSHIP</div>
+        <div class="jr-v" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">VEREDITO</div>
+      </div>
+      <div class="jr fora"><div class="jr-d">15/06<span>segunda</span></div>
+        <div class="jr-t">AI Canvas · Rafael Ribeiro</div>
+        <div class="jr-l">—<span>antes da nossa janela</span></div>
+        <div class="jr-v">já passou</div></div>
+      <div class="jr fora"><div class="jr-d">10/08<span>segunda</span></div>
+        <div class="jr-t">Vibecoding · Marcelo Echeverria</div>
+        <div class="jr-l">—<span>antes da nossa janela</span></div>
+        <div class="jr-v">já passou</div></div>
+      <div class="jr nao"><div class="jr-d">08/09<span>terça</span></div>
+        <div class="jr-t">Como mapear os principais processos e inserir ferramentas de IA</div>
+        <div class="jr-l">HO 02 · Do mapa ao alvo<span>mesmo assunto, mas acontece em 13/10</span></div>
+        <div class="jr-v">não unifica</div></div>
+      <div class="jr une"><div class="jr-d">05/10<span>segunda</span></div>
+        <div class="jr-t">Cultura AI First: formando times que usam IA todos os dias</div>
+        <div class="jr-l">EC 05 · Cultura AI First<span>"seu time usando IA todo dia". Praticamente o mesmo título</span></div>
+        <div class="jr-v">unifica</div></div>
+      <div class="jr une"><div class="jr-d">03/11<span>terça</span></div>
+        <div class="jr-t">ROI de IA: como priorizar, medir e defender investimento diante do board</div>
+        <div class="jr-l">EC 03 · Quem faz o quê quando a IA entra<span>é o encontro que absorve o tópico de ROI</span></div>
+        <div class="jr-v">unifica</div></div>
+      <div class="jr nao"><div class="jr-d">30/11<span>segunda</span></div>
+        <div class="jr-t">Redesenho do modelo operacional na era da IA</div>
+        <div class="jr-l">M4 gravado · organograma híbrido<span>o Leadership termina em 16/11</span></div>
+        <div class="jr-v">fora da janela</div></div>
+    </div>
+    <div class="note">
+      <b>O 30/11 tem solução parcial sem sessão nova.</b> O tema "redesenho do modelo operacional" é
+      exatamente o conteúdo gravado do Módulo 4 (organograma híbrido, agentificação e quem decide e quem
+      audita). Quem vier do Journey já vai ter assistido, então a mentoria de 30/11 pode partir daí em
+      vez de começar do zero.
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>O que foi reordenado, e por quê</h2>
+      <p class="sub">Quatro encontros trocaram de slot. Dois por causa do AI Journey e dois por efeito cascata.</p></div>
+    <div class="jt">
+      <div class="jr" style="background:rgba(255,255,255,.03)">
+        <div class="jr-d" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;background:none">ENCONTRO</div>
+        <div class="jr-t" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">POR QUE MUDOU</div>
+        <div class="jr-l" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">ERA</div>
+        <div class="jr-v" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">VIROU</div>
+      </div>
+      <div class="jr une"><div class="jr-d">EC 05<span>Cultura AI First</span></div>
+        <div class="jr-t">O AI Journey tem "Cultura AI First" em 05/10 e o nosso EC 05 tem praticamente o mesmo título. Movido para casar com a data</div>
+        <div class="jr-l" style="color:var(--dim)">09/11</div>
+        <div class="jr-v" style="color:var(--amarelo)">05/10</div></div>
+      <div class="jr"><div class="jr-d">HO 02<span>Do mapa ao alvo</span></div>
+        <div class="jr-t">Deslocado pelo EC 05. Continua depois do EC 02 com o Piero, que entrega o critério de gente × máquina que o HO 02 aplica</div>
+        <div class="jr-l" style="color:var(--dim)">05/10</div>
+        <div class="jr-v" style="color:var(--amarelo)">13/10</div></div>
+      <div class="jr une"><div class="jr-d">EC 03<span>Quem faz o quê</span></div>
+        <div class="jr-t">O AI Journey tem ROI em 03/11, e o EC 03 é o único encontro que absorve esse tópico sem forçar. Resolve também a lacuna de ROI da nossa ementa</div>
+        <div class="jr-l" style="color:var(--dim)">13/10</div>
+        <div class="jr-v" style="color:var(--amarelo)">03/11</div></div>
+      <div class="jr"><div class="jr-d">EC 04<span>O acordo com o time</span></div>
+        <div class="jr-t">Deslocado pelo EC 03. Continua no bloco de adoção, junto do HO 04</div>
+        <div class="jr-l" style="color:var(--dim)">03/11</div>
+        <div class="jr-v" style="color:var(--amarelo)">09/11</div></div>
+    </div>
+    <div class="note">
+      <b>O que a reordenação preservou.</b> Nenhuma data mudou. A cadeia dos hands on segue intacta
+      (HO 01 → HO 02 → Checkpoint → HO 03 → HO 04), o EC 02 com o Piero continua antes do HO 02, e os
+      capítulos 1 a 4 saem na ordem. Só encontros de estudo de caso trocaram de posição, e a própria
+      ementa já prevê que a ordem deles muda conforme a agenda dos professores.
+    </div>
+    <div class="note warn">
+      <b>O que a reordenação custou.</b> Três coisas, e nenhuma é barata de esconder.
+      O <b>EC 05</b> é passo 05 do flywheel e passou a cair na semana 4, fora de ordem; funciona porque é
+      estudo de caso, que é repertório com o computador fechado, e os módulos estão abertos desde o dia 1.
+      O <b>EC 03</b> passou a vir depois do HO 03, então em vez de dar repertório antes da construção ele
+      passa a servir de comparação depois; o Checkpoint continua sendo o portão do HO 03.
+      E o <b>Capítulo 2</b> sai uma semana mais tarde, o que encurta para seis dias o intervalo entre o
+      HO 02 e o Checkpoint.
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>Duas coisas em aberto</h2></div>
+    <div class="g2">
+      <div class="card acc"><div class="kl">Altitude do ROI</div><h3>Board ou escala reduzida?</h3>
+        <p>O Journey pede "defender investimento diante do board". A ementa do Leadership pede "ROI em
+        escala reduzida" e "o argumento de 2 minutos". É o mesmo tema em alturas diferentes. Uma sessão
+        única precisa escolher um nível ou cobrir os dois de propósito.</p></div>
+      <div class="card acc"><div class="kl">Escopo</div><h3>Só a Turma 04?</h3>
+        <p>A mesma planilha tem abas de Turma 01, 02 e 03. Se essas turmas também entram no Leadership,
+        a união passa a envolver quatro calendários de mentoria estratégica, e a chance de todos caírem
+        nos nossos slots é baixa.</p></div>
     </div>
   </div>
 </section>
@@ -575,11 +713,11 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
         <div class="pf-b"><div class="fix">Piero Franceschi.<span>Único convidado que a ementa nomeia. Gravou as duas aulas que dão nome ao módulo, então o ao vivo é continuidade direta do gravado.</span></div></div>
       </div>
       <div class="pf ">
-        <div class="pf-h"><span class="cd2">HO 02</span><span class="dt">05/10</span><h3>Do mapa ao alvo</h3></div>
+        <div class="pf-h"><span class="cd2">HO 02</span><span class="dt">13/10</span><h3>Do mapa ao alvo</h3></div>
         <div class="pf-b"><div class="need">Precisamos de quem escolhe alvo em processo alheio, ao vivo.</div><div class="chklist"><div>Já mapeou processo real e escolheu por onde começar</div><div>Aplica impacto, viabilidade e urgência no escopo de outra pessoa, na hora</div><div>Consegue dizer "esse não é um bom candidato" e sustentar o porquê</div><div>Aguenta 15 escopos diferentes na mesma sessão sem virar consultoria individual</div><div>Sai da sessão com um alvo escrito por aluno</div></div></div>
       </div>
       <div class="pf ">
-        <div class="pf-h"><span class="cd2">EC 03</span><span class="dt">13/10</span><h3>Quem faz o quê quando a IA entra</h3></div>
+        <div class="pf-h"><span class="cd2">EC 03</span><span class="dt">03/11</span><h3>Quem faz o quê quando a IA entra</h3></div>
         <div class="pf-b"><div class="need">Precisamos de quem redesenhou a divisão de trabalho de um time com IA dentro.</div><div class="chklist"><div>Tem o antes e o depois por etapa de processo, não só o resultado</div><div>Sabe dizer onde manteve o humano e por quê</div><div>Tem número: horas liberadas, custo evitado ou erro reduzido</div><div>Definiu alçada, ou seja, o que a IA decide sozinha</div><div>Consegue falar de ROI em escala pequena, sem business case corporativo</div></div></div>
       </div>
       <div class="pf ">
@@ -591,11 +729,11 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-si
         <div class="pf-b"><div class="need">Precisamos de quem já colocou agente em operação, não em demo.</div><div class="chklist"><div>Conecta agente a sistema real ao vivo, com conector ou MCP</div><div>Sabe o que fazer quando a permissão falha na frente de todos</div><div>Já viu agente rodando em produção e conta o que quebrou</div><div>Tem caminho alternativo pronto para quem não conseguir instalar nada</div><div>Garante que ninguém sai da sessão sem um agente rodando</div></div></div>
       </div>
       <div class="pf ">
-        <div class="pf-h"><span class="cd2">EC 04</span><span class="dt">03/11</span><h3>O acordo com o time</h3></div>
+        <div class="pf-h"><span class="cd2">EC 04</span><span class="dt">09/11</span><h3>O acordo com o time</h3></div>
         <div class="pf-b"><div class="need">Precisamos de quem já teve a conversa difícil com o time.</div><div class="chklist"><div>Conduziu a conversa de metas e tempo liberado depois da IA entrar</div><div>Tem caso de resistência que não virou adesão, e conta o que fez</div><div>Fala de performance e avaliação individual sem eufemismo</div><div>Não vende harmonia: conta o atrito e o custo dele</div><div>Tem pessoa concreta na história, não perfil genérico</div></div></div>
       </div>
       <div class="pf ">
-        <div class="pf-h"><span class="cd2">EC 05</span><span class="dt">09/11</span><h3>Cultura AI First: seu time usando IA todo dia</h3></div>
+        <div class="pf-h"><span class="cd2">EC 05</span><span class="dt">05/10</span><h3>Cultura AI First: seu time usando IA todo dia</h3></div>
         <div class="pf-b"><div class="need">Precisamos de quem tem time usando IA há pelo menos seis meses.</div><div class="chklist"><div>Mostra o ritual que sustenta o uso, não o discurso de cultura</div><div>Tem experimento barato que deu errado e o que aprendeu com ele</div><div>Sabe contar o momento em que a adoção caiu e como recuperou</div><div>Consegue mostrar como mede uso, não só como incentiva</div><div>Fala de time pequeno, não de programa de inovação da empresa</div></div></div>
       </div>
       <div class="pf ">
