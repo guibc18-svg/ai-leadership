@@ -19,16 +19,11 @@ Documentação da turma com kick-off em **08/09/2026**. Três páginas HTML, tod
 
 ## Como visualizar
 
-O repositório é privado, então não há GitHub Pages. Duas formas:
+As páginas estão publicadas no GitHub Pages, abrem direto no navegador:
 
-```bash
-git clone https://github.com/guibc18-svg/ai-leadership.git
-cd ai-leadership
-open ai-leadership-apresentacao.html
-```
-
-Ou, sem clonar: abra o arquivo no GitHub, clique em **Download raw file** e abra o `.html` baixado
-no navegador. Visualizar direto no GitHub não funciona, porque o GitHub não renderiza HTML.
+- **[Apresentação](https://guibc18-svg.github.io/ai-leadership/)** · comece por aqui
+- [Grade da turma](https://guibc18-svg.github.io/ai-leadership/grade-turma-08-09.html)
+- [Estrutura aula por aula](https://guibc18-svg.github.io/ai-leadership/estrutura-ai-leadership.html)
 
 ## Fontes
 
