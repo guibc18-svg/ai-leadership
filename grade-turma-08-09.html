@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade AI Leadership · Turma 08/09</title>
+<style>
+  :root{
+    --bg:#0C0C0D; --panel:#141416; --panel2:#1B1B1E;
+    --line:#2A2A2E; --line2:#3A3A40;
+    --ink:#F2F1EE; --dim:#9C9CA4; --dim2:#6E6E76;
+    --laranja:#FFA01A; --amarelo:#FFDC6D; --creme:#FFFCF4;
+    --alerta:#FF7A6B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    padding:56px 28px 100px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{font-size:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin-bottom:14px}
+  h1{font-size:46px;line-height:1.1;font-weight:700;letter-spacing:-.02em;margin-bottom:22px}
+  h1 span{color:var(--laranja)}
+  .lead{font-size:21px;line-height:1.55;color:#D6D5D1;max-width:76ch}
+  .lead b{color:var(--amarelo);font-weight:600}
+  h2{font-size:31px;line-height:1.2;font-weight:700;letter-spacing:-.015em;margin-bottom:12px}
+  h3{font-size:19px;font-weight:700;margin-bottom:6px}
+  .sub{font-size:17px;color:var(--dim);max-width:84ch}
+  section{margin-top:78px}
+  .shead{margin-bottom:32px;border-top:1px solid var(--line);padding-top:30px}
+  .snum{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--dim2);margin-bottom:12px}
+  code{font-size:16px;color:#CFCEC9}
+
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .bg{display:inline-block;font-size:16px;font-weight:700;border-radius:6px;padding:3px 10px;white-space:nowrap}
+  .bg.em{background:var(--laranja);color:#0C0C0D}
+  .bg.sug{background:transparent;color:var(--amarelo);border:1px dashed var(--amarelo)}
+  .bg.fac{background:var(--creme);color:#0C0C0D}
+  .bg.gap{background:transparent;color:var(--dim);border:1px dashed var(--dim2)}
+  .lgi{display:flex;align-items:center;gap:9px;font-size:16px;color:var(--dim);
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .ch{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--laranja);
+    border-radius:12px;padding:20px 18px;display:flex;flex-direction:column}
+  .ch .mn{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
+  .ch .mt{font-size:20px;font-weight:700;margin-top:6px;line-height:1.25}
+  .ch .mq{font-size:16px;color:var(--amarelo);margin-top:12px;line-height:1.45}
+  .ch .md{font-size:16px;color:var(--dim);margin-top:10px;line-height:1.45;flex:1}
+  .ch .mh{font-size:16px;font-weight:700;color:var(--laranja);margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+
+  .cw{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .cr{display:grid;grid-template-columns:58px 1fr 104px 1fr;border-bottom:1px solid var(--line)}
+  .cr:last-child{border-bottom:0}
+  .cr>div{padding:16px 18px}
+  .cr-o{border-right:1px solid var(--line);background:rgba(255,255,255,.015);font-size:23px;font-weight:700;color:var(--laranja);text-align:center}
+  .cr-n{font-size:19px;font-weight:700}
+  .cr-n span{display:block;font-size:16px;color:var(--dim);font-weight:400;margin-top:2px}
+  .cr-q{border-left:1px solid var(--line);border-right:1px solid var(--line);font-size:17px;font-weight:700;color:var(--amarelo);text-align:center;white-space:nowrap}
+  .cr-q span{display:block;font-size:16px;color:var(--dim2);font-weight:400}
+  .cr-w{font-size:16px;color:var(--dim);line-height:1.45}
+  .cr-w b{color:var(--creme);font-weight:600}
+  .cr.intl .cr-o{color:var(--amarelo)} .cr.intl{background:rgba(255,252,244,.03)}
+
+  .mod{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:22px;overflow:hidden}
+  .mod-h{padding:24px 26px;border-bottom:1px solid var(--line);background:rgba(255,160,26,.07)}
+  .mod-h .tag{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0C0C0D;background:var(--laranja);border-radius:6px;padding:3px 10px}
+  .mod-h .fw{font-size:16px;color:var(--dim);margin-left:10px}
+  .mod-h h3{font-size:25px;margin-top:14px;margin-bottom:8px}
+  .mod-h .obj{font-size:17px;color:#CFCEC9;max-width:88ch}
+  .mod-h .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .pill{font-size:16px;color:#CFCEC9;background:rgba(255,255,255,.05);border:1px solid var(--line2);border-radius:999px;padding:5px 14px}
+  .pill b{color:var(--amarelo)}
+  .cast{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;border-top:1px solid rgba(255,160,26,.25);padding-top:14px}
+  .cast .cl{font-size:16px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--dim2);margin-right:4px}
+  .cast .cp{font-size:16px;font-weight:600;color:#0C0C0D;background:var(--creme);border-radius:6px;padding:3px 10px;white-space:nowrap}
+  .cast .cp b{font-weight:700;opacity:.55;margin-left:3px}
+  .cast .cp.i{background:transparent;color:var(--amarelo);border:1px solid var(--amarelo)}
+  .cast .ar{color:var(--dim2);font-size:16px}
+
+  table{width:100%;border-collapse:collapse;font-size:17px;table-layout:fixed}
+  col.d{width:66px} col.n{width:44px} col.p{width:164px} col.b{width:104px}
+  th{text-align:left;padding:14px 18px;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);border-bottom:1px solid var(--line2)}
+  td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  .ord{font-size:17px;font-weight:700;color:var(--dim2);text-align:center}
+  .dur{font-size:17px;font-weight:700;color:var(--amarelo);white-space:nowrap}
+  .prof{font-size:16px;font-weight:600;color:var(--creme);line-height:1.3}
+  .prof span{display:block;font-size:16px;color:var(--dim2);font-weight:400;margin-top:1px}
+  .prof.intl{color:var(--amarelo)} .prof.none{color:var(--dim2);font-weight:400;font-style:italic}
+  .aula{font-size:17px;font-weight:600;line-height:1.35}
+  .aula em{display:block;font-style:normal;font-size:16px;font-weight:400;color:var(--amarelo);margin-top:3px}
+  .serve{font-size:16px;color:var(--dim);line-height:1.4}
+  tr.gaprow td{background:rgba(255,255,255,.02)}
+  tr.gaprow .aula{color:var(--dim);font-weight:400;font-style:italic}
+  tr.pairtop td{border-bottom-color:transparent}
+  tr.pairtop td,tr.pairbot td{background:rgba(255,220,109,.045)}
+
+  .dep{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
+  .dep-h{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
+  .dep-h h3{margin:0}
+  .dep-h .k{font-size:16px;font-weight:700;border-radius:6px;padding:3px 10px}
+  .k.hard{background:var(--alerta);color:#0C0C0D}
+  .k.soft{background:var(--amarelo);color:#0C0C0D}
+  .dep-b{padding:20px 24px;font-size:17px;line-height:1.55;color:#CFCEC9}
+  .dep-b .q{display:block;margin:12px 0;padding:12px 16px;border-left:3px solid var(--amarelo);
+    background:rgba(255,220,109,.06);font-size:16px;color:var(--creme);font-style:italic}
+  .dep-l{display:grid;gap:10px;margin-top:14px}
+  .dl{display:flex;gap:12px;font-size:16px;line-height:1.45;color:var(--dim)}
+  .dl .t{flex:0 0 250px;color:var(--creme);font-weight:600}
+
+  .flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;overflow-x:auto}
+  .fl{display:flex;align-items:stretch;gap:0;min-width:900px}
+  .fn{flex:1;background:var(--panel2);border:1px solid var(--line2);border-radius:11px;padding:16px 16px}
+  .fn.root{border-color:var(--amarelo);background:rgba(255,220,109,.08)}
+  .fn .ft{font-size:16px;font-weight:700;line-height:1.3}
+  .fn .fs{font-size:16px;color:var(--dim);margin-top:5px;line-height:1.4}
+  .fa{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:var(--dim2);font-size:19px}
+
+  .cal{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .wk{display:grid;grid-template-columns:142px 1fr 196px 196px;border-bottom:1px solid var(--line)}
+  .wk:last-child{border-bottom:0}
+  .wk>div{padding:15px 18px}
+  .wk-n{border-right:1px solid var(--line);background:rgba(255,255,255,.015);font-weight:700;font-size:17px}
+  .wk-n span{display:block;font-size:16px;color:var(--dim2);font-weight:400;margin-top:2px}
+  .wk-s{font-size:17px}
+  .wk-s span{display:block;font-size:16px;color:var(--dim);margin-top:2px}
+  .wk-m{border-left:1px solid var(--line);font-size:16px}
+  .wk-e{border-left:1px solid var(--line);font-size:16px;color:var(--dim)}
+  .wk.zero{background:rgba(255,252,244,.05)} .wk.ck{background:rgba(255,160,26,.08)}
+  .rel{font-size:16px;font-weight:700;color:#0C0C0D;background:var(--amarelo);border-radius:6px;padding:3px 10px;display:inline-block}
+  .use{font-size:16px;color:var(--dim2)} .cap{font-size:16px;font-weight:700;color:var(--laranja)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .card.fac{border-left:4px solid var(--creme)} .card.orf{border-left:4px solid var(--dim2)}
+  .card .cs{font-size:16px;color:var(--dim);margin-bottom:16px;line-height:1.45}
+  .li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.4}
+  .li:last-child{border-bottom:0}
+  .li .d{color:var(--amarelo);font-weight:700;flex:0 0 56px}
+  .li .w{flex:1} .li .r{color:var(--dim);display:block;margin-top:2px}
+
+  .note{margin-top:24px;background:rgba(255,160,26,.07);border:1px solid rgba(255,160,26,.28);border-radius:12px;padding:22px 24px;font-size:17px;line-height:1.55}
+  .note b{color:var(--amarelo)}
+  .note.warn{background:rgba(255,255,255,.03);border-color:var(--line2)}
+  .note.ok{background:rgba(255,252,244,.05);border-color:rgba(255,252,244,.22)}
+  .note.ok b{color:var(--creme)}
+  .note+.note{margin-top:14px}
+
+  .inv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .icard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center}
+  .ival{font-size:40px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--amarelo)}
+  .ival.o{color:var(--laranja)}
+  .ilab{font-size:17px;font-weight:700;margin-top:12px}
+  .idet{font-size:16px;color:var(--dim);margin-top:5px;line-height:1.45}
+
+  footer{margin-top:78px;border-top:1px solid var(--line);padding-top:26px;font-size:16px;color:var(--dim2)}
+
+  @media (max-width:1080px){
+    body{padding:40px 18px 70px} h1{font-size:34px}
+    .chain,.inv{grid-template-columns:1fr 1fr}
+    .grid2{grid-template-columns:1fr}
+    .wk{grid-template-columns:1fr}
+    .wk-n{border-right:0;border-bottom:1px solid var(--line)}
+    .wk-m,.wk-e{border-left:0;border-top:1px solid var(--line)}
+    .cr{grid-template-columns:48px 1fr}
+    .cr-q,.cr-w{border-left:0;border-top:1px solid var(--line)}
+    table{table-layout:auto} .dl{flex-direction:column;gap:2px} .dl .t{flex:none}
+  }
+
+  .asks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+  .ask{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--laranja);border-radius:12px;padding:20px 18px}
+  .ask .an{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
+  .ask .aq{font-size:18px;font-weight:700;margin-top:7px;line-height:1.3}
+  .ask .av{font-size:16px;color:var(--amarelo);margin-top:10px;line-height:1.45;font-weight:600}
+  .big{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .kr{display:grid;grid-template-columns:70px 158px 1fr 112px 118px;border-bottom:1px solid var(--line)}
+  .kr:last-child{border-bottom:0}
+  .kr>div{padding:15px 16px}
+  .kr-w{border-right:1px solid var(--line);background:rgba(255,255,255,.015);font-weight:700;font-size:17px;text-align:center}
+  .kr-d{border-right:1px solid var(--line);font-size:17px;font-weight:700}
+  .kr-d span{display:block;font-size:16px;color:var(--dim2);font-weight:400}
+  .kr-s{font-size:17px}
+  .kr-s span{display:block;font-size:16px;color:var(--dim);margin-top:2px}
+  .kr-m{border-left:1px solid var(--line);font-size:16px;color:var(--dim)}
+  .kr-c{border-left:1px solid var(--line);font-size:16px}
+  .kr.ko{background:rgba(255,252,244,.06)} .kr.ko .kr-d{color:var(--creme)}
+  .kr.ck{background:rgba(255,160,26,.09)}
+  .kr.sk{background:rgba(255,122,107,.05)}
+  .kr.sk .kr-w{color:var(--dim2)}
+  .kr.sk .kr-d,.kr.sk .kr-s{color:var(--alerta)}
+  .kr.sk .kr-s span{color:var(--dim)}
+  .kr.sk .kr-d span{color:var(--dim2)}
+  .kr.hol{background:rgba(255,122,107,.06)}
+  .kr .fer{display:block;font-size:16px;color:var(--alerta);margin-top:3px}
+  .rm{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .rmr{display:grid;grid-template-columns:1fr 90px 190px;border-bottom:1px solid var(--line)}
+  .rmr:last-child{border-bottom:0}
+  .rmr>div{padding:15px 18px}
+  .rmr .t{font-size:17px;font-weight:600} .rmr .t span{display:block;font-size:16px;color:var(--dim);font-weight:400;margin-top:2px}
+  .rmr .q{border-left:1px solid var(--line);font-size:17px;font-weight:700;color:var(--amarelo);text-align:center}
+  .rmr .a{border-left:1px solid var(--line);font-size:16px}
+  .tagr{font-size:16px;font-weight:700;border-radius:6px;padding:3px 9px;display:inline-block}
+  .tagr.opt{background:var(--amarelo);color:#0C0C0D}
+  .tagr.reg{background:var(--creme);color:#0C0C0D}
+  @media (max-width:1080px){.asks{grid-template-columns:1fr 1fr}.kr,.rmr{grid-template-columns:1fr}
+    .kr-d,.kr-w{border-right:0;border-bottom:1px solid var(--line)}
+    .kr-m,.kr-c,.rmr .q,.rmr .a{border-left:0;border-top:1px solid var(--line)}}
+
+
+  /* encontros ao vivo */
+  .ev{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:0}
+  .er{display:grid;grid-template-columns:104px 146px 1fr 1fr;border-bottom:1px solid var(--line)}
+  .er:last-child{border-bottom:0}
+  .er>div{padding:17px 18px}
+  .er-c{border-right:1px solid var(--line);background:rgba(255,255,255,.02);text-align:center}
+  .er-c .cod{font-size:19px;font-weight:700;color:var(--laranja);line-height:1.15}
+  .er-c .fmt{font-size:16px;color:var(--dim2);margin-top:4px}
+  .er-d{border-right:1px solid var(--line)}
+  .er-d .dt{font-size:19px;font-weight:700} .er-d .dw{font-size:16px;color:var(--dim2)}
+  .er-d .mo{font-size:16px;color:var(--amarelo);margin-top:6px;font-weight:600}
+  .er-t{border-right:1px solid var(--line);font-size:17px;font-weight:600;line-height:1.35}
+  .er-t span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:4px}
+  .er-t .cp{display:inline-block;font-size:16px;font-weight:700;color:var(--laranja);margin-top:7px}
+  .er-p{font-size:17px;font-weight:600;line-height:1.3}
+  .er-p .st{display:inline-block;font-size:16px;font-weight:700;border-radius:5px;padding:2px 8px;margin-bottom:7px}
+  .st.ok{background:var(--creme);color:#0C0C0D}
+  .st.pr{background:transparent;color:var(--amarelo);border:1px dashed var(--amarelo)}
+  .st.ab{background:transparent;color:var(--dim);border:1px dashed var(--dim2)}
+  .er-p .wy{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:5px;line-height:1.4}
+  .er.ko{background:rgba(255,252,244,.05)} .er.ko .cod{color:var(--creme)}
+  .er.ck{background:rgba(255,160,26,.08)}
+  .opt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .oc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .oc.rec{border-color:rgba(255,160,26,.45);background:rgba(255,160,26,.05)}
+  .oc h3{margin-bottom:4px} .oc .os{font-size:16px;color:var(--dim);margin-bottom:14px}
+  .oc .rk{display:inline-block;font-size:16px;font-weight:700;color:#0C0C0D;background:var(--laranja);border-radius:5px;padding:2px 9px;margin-bottom:10px}
+  .dts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .dts b{font-size:16px;font-weight:700;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:4px 9px;color:#CFCEC9}
+  .dts b.mv{background:rgba(255,122,107,.14);border-color:var(--alerta);color:var(--alerta)}
+  .dts b.sk{background:transparent;border-style:dashed;color:var(--dim2);text-decoration:line-through}
+  .oc ul{margin:0;padding-left:20px;font-size:16px;color:var(--dim);line-height:1.6}
+  .oc ul b{color:var(--creme)}
+  @media (max-width:1080px){.er{grid-template-columns:1fr}.er-c,.er-d,.er-t{border-right:0;border-bottom:1px solid var(--line)}.opt{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">AI Academy · StartSe · 19/08/2026</div>
+  <h1>Grade e calendário<br><span>AI Leadership · turma de 08/09</span></h1>
+  <p class="lead">
+    Kick-off em <b>terça, 08/09</b>, e as 10 sessões nas <b>segundas</b> seguintes, sempre 19h às 21h.
+    Duas segundas caem em feriado nacional, então o programa fecha em <b>30/11</b>. A grade abaixo usa só o material já gravado, <b>sem nenhuma
+    regravação de aula de conteúdo</b>.
+  </p>
+
+  <div class="asks">
+    <div class="ask"><div class="an">Pergunta 1</div><div class="aq">O que remover</div>
+      <div class="av">11 aulas saem da trilha obrigatória: 3h45. Nada é descartado, viram camada opcional</div></div>
+    <div class="ask"><div class="an">Pergunta 2</div><div class="aq">O módulo do Piero</div>
+      <div class="av">Entra como Módulo 02, com as 2 aulas dele mais o Ponto de Inflexão. 1h50</div></div>
+    <div class="ask"><div class="an">Pergunta 3</div><div class="aq">Calendário</div>
+      <div class="av">08/09 a 30/11, segundas. Duas semanas puladas por feriado</div></div>
+    <div class="ask"><div class="an">Pergunta 4</div><div class="aq">Professores ao vivo</div>
+      <div class="av">4 confirmados e 7 propostas, um a um na seção 05</div></div>
+  </div>
+
+  <!-- 01 -->
+  <section>
+    <div class="shead"><div class="snum">01</div>
+      <h2>A restrição, e o que ela decide</h2>
+      <p class="sub">Sem regravação e sem edição de aula de conteúdo. A única coisa que pode mudar são as aulas de introdução do curso. Isso muda três coisas.</p>
+    </div>
+    <div class="note">
+      <b>A introdução vira a peça mais importante da grade.</b> É o único lugar onde a jornada do
+      AI Leadership pode ser explicada com as palavras certas. As duas aulas atuais falam de 8 semanas,
+      de workshops e do AI Strategy Plan, então elas não podem ficar como estão. A nova introdução precisa
+      apresentar as 10 semanas, os quatro capítulos do Plano de Liderança em IA e os três formatos de sessão.
+    </div>
+    <div class="note">
+      <b>Cinco tópicos da ementa não têm aula gravada, e isso não é problema.</b> Eles são conteúdo de
+      encontro ao vivo, que é adaptável ao roteiro da sessão. O perímetro de decisão cai no EC 01, os
+      3 pilares por pessoa no HO 01, o critério de gente × máquina no HO 02, a governança de bolso no
+      HO 04, e o ROI em escala reduzida no EC 03 ou no HO 03. Nenhum deles depende de gravação.
+    </div>
+    <div class="note">
+      <b>A nova introdução resolve um detalhe de continuidade.</b> Algumas aulas citam exemplos de outras
+      aulas do AI MAX que não entram na trilha. Basta a introdução avisar que isso acontece e que o aluno
+      não precisa desses exemplos para acompanhar.
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="shead"><div class="snum">02</div>
+      <h2>O que sai da trilha obrigatória</h2>
+      <p class="sub">
+        11 aulas, 3h45. Duas precisam de regravação porque estão factualmente erradas. As outras nove são
+        boas, mas tratam de decisão acima do perímetro de um gerente com time de 5 a 15 pessoas, ou são
+        recortadas por área de negócio, e a ementa não organiza nenhum módulo por área.
+      </p>
+    </div>
+    <div class="rm">
+      <div class="rmr"><div class="t">Onboarding · Boas-vindas + Estrutura do Curso<span>Guilherme Barbosa. Falam de 8 semanas, workshops e AI Strategy Plan. Nada disso existe no AI Leadership</span></div><div class="q">0h04</div><div class="a"><span class="tagr reg">regravar</span></div></div>
+      <div class="rmr"><div class="t">Camadas do Mercado · P1 e P2<span>Caio Montanheiro. Build or buy de infraestrutura, modelo e dados. Decisão de arquitetura corporativa</span></div><div class="q">0h53</div><div class="a"><span class="tagr opt">opcional</span></div></div>
+      <div class="rmr"><div class="t">Gigantes vs Insurgentes · P1 e P2<span>Caio Montanheiro. Escolha de ecossistema e fornecedor, risco de lock-in</span></div><div class="q">0h59</div><div class="a"><span class="tagr opt">opcional</span></div></div>
+      <div class="rmr"><div class="t">Benchmarks Setoriais · P1 e P2<span>Caio Montanheiro. Leitura crítica de relatório setorial</span></div><div class="q">0h53</div><div class="a"><span class="tagr opt">opcional</span></div></div>
+      <div class="rmr"><div class="t">IA no Comercial · P1 e P2<span>Gabriel Custódio. Recorte de vendas</span></div><div class="q">0h38</div><div class="a"><span class="tagr opt">opcional</span></div></div>
+      <div class="rmr"><div class="t">IA no Financeiro e Análise de Dados<span>Gabriel Custódio. Recorte de financeiro</span></div><div class="q">0h18</div><div class="a"><span class="tagr opt">opcional</span></div></div>
+    </div>
+    <div class="note">
+      <b>Sugestão: não descartar, virar camada opcional.</b> As nove aulas ficam numa trilha
+      "Aplicação e mercado", liberada junto com o resto e sem contar como pré-requisito de nenhum encontro.
+      Isso mantém as 17h de biblioteca de pé, dá volume percebido sem campanha de lançamento, e ninguém
+      trava por não ter assistido.
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="shead"><div class="snum">03</div>
+      <h2>O módulo do Piero</h2>
+      <p class="sub">Entra como Módulo 02, que é onde a ementa já o posiciona e já cita o nome dele.</p>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 02</span><span class="fw">passo 02 Mercado · consumido no EC 02, em 28/09</span>
+        <h3>Contexto — O trabalho de ser humano</h3>
+        <p class="obj">Entender por que o modelo de trabalho colapsou e o que sobra para o humano.</p>
+        <div class="meta"><span class="pill"><b>4</b> aulas</span><span class="pill"><b>1h50</b></span>
+          <span class="pill">entrega o <b>critério</b> que o Módulo 03 aplica</span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Piero Franceschi<b>2</b></span>
+          <span class="ar">→</span><span class="cp">Caio Montanheiro<b>2</b></span>
+          <span class="ar">+</span><span class="cp i">Faculty<b>5</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col style="width:38%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>O que entrega</th></tr></thead>
+        <tbody>
+          <tr class="pairtop"><td class="dur">28,2</td><td class="prof">Piero Franceschi<span>CEO da StartSe</span></td>
+            <td class="aula">O Trabalho de Ser Humano · 1.1</td>
+            <td class="serve">A Era da Reconfiguração. Taylor, os três Cs do trabalho e a perda do monopólio dos verbos humanos</td></tr>
+          <tr class="pairbot"><td class="dur">26,8</td><td class="prof">Piero Franceschi</td>
+            <td class="aula">O Trabalho de Ser Humano · 1.2<em>par travado: a 1.2 abre com "bem-vindos de volta", não pode ser separada da 1.1</em></td>
+            <td class="serve">Desafio, descoberta e diálogo. O líder corajoso e a matriz de decisão reversível</td></tr>
+          <tr class="pairtop"><td class="dur">26,1</td><td class="prof">Caio Montanheiro<span>pesquisador de IA para decisão</span></td>
+            <td class="aula">Ponto de Inflexão · P1</td>
+            <td class="serve">O que mudou de fato entre 2023 e hoje. É o único tópico do módulo que o Piero não cobre</td></tr>
+          <tr class="pairbot"><td class="dur">28,6</td><td class="prof">Caio Montanheiro</td>
+            <td class="aula">Ponto de Inflexão · P2<em>par travado</em></td>
+            <td class="serve">Os catalisadores e a deflação do custo de token</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">
+      <b>Ponto de atenção de nomenclatura.</b> A ementa chama o Módulo 02 de "Contexto" mas rotula o passo
+      do flywheel como "02 Mercado", e o conteúdo do Piero não é mercado. Vale alinhar o rótulo antes de
+      publicar na plataforma. A divergência entre nome de módulo e nome do passo existe em quatro dos cinco
+      módulos: só o Módulo 01 bate.
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="shead"><div class="snum">04</div>
+      <h2>Calendário das 10 semanas</h2>
+      <p class="sub">Kick-off na terça 08/09. As 10 sessões que contam para presença nas segundas seguintes, 19h às 21h, pelo Zoom via plataforma.</p>
+    </div>
+
+    <div class="opt">
+      <div class="oc rec">
+        <span class="rk">recomendada</span>
+        <h3>Opção A · pula as duas semanas de feriado</h3>
+        <p class="os">Toda sessão fica na segunda. O programa passa a ocupar 12 semanas de calendário.</p>
+        <div class="dts"><b>14/09</b><b>21/09</b><b>28/09</b><b>05/10</b><b class="sk">12/10</b><b>19/10</b><b>26/10</b><b class="sk">02/11</b><b>09/11</b><b>16/11</b><b>23/11</b><b>30/11</b></div>
+        <ul>
+          <li>Fecha em <b>30/11</b>, certificado até <b>07/12</b></li>
+          <li>Mantém o hábito de <b>uma única segunda-feira</b>, que é o que a régua de comunicação precisa para o texto recorrente funcionar</li>
+          <li>Não pede presença em feriado, então protege o critério de 5 dos 10</li>
+        </ul>
+      </div>
+      <div class="oc">
+        <h3>Opção B · move as duas para terça</h3>
+        <p class="os">Mantém as 10 semanas corridas, com duas sessões fora do dia habitual.</p>
+        <div class="dts"><b>14/09</b><b>21/09</b><b>28/09</b><b>05/10</b><b class="mv">13/10 ter</b><b>19/10</b><b>26/10</b><b class="mv">03/11 ter</b><b>09/11</b><b>16/11</b></div>
+        <ul>
+          <li>Fecha em <b>16/11</b>, certificado até <b>23/11</b>, duas semanas mais cedo</li>
+          <li>As duas sessões movidas caem <b>na terça logo após feriado de segunda</b>, que é o dia clássico de emenda</li>
+          <li>Quebra o dia fixo, então a régua precisa de aviso específico nessas duas semanas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="big" style="margin-top:22px">
+      <div class="kr" style="background:rgba(255,255,255,.03)">
+        <div class="kr-w" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">SEM</div>
+        <div class="kr-d" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">DATA</div>
+        <div class="kr-s" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">SESSÃO</div>
+        <div class="kr-m" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">MÓDULO</div>
+        <div class="kr-c" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">ENTREGA</div>
+      </div>
+      <div class="kr ko">
+        <div class="kr-w">0</div>
+        <div class="kr-d">08/09<span>terça · 19h–21h</span></div>
+        <div class="kr-s">Kick-off · Encontro de Abertura<span>Estrutura, calendário, plataforma e time. Não conta para as 10</span></div>
+        <div class="kr-m">—</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">1</div>
+        <div class="kr-d">14/09<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">EC 01 · Perímetro e influência<span>Liderar sem crachá</span></div>
+        <div class="kr-m">M01</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">2</div>
+        <div class="kr-d">21/09<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">HO 01 · Faça em 20 min o que hoje te toma 6h<span>Primeira skill construída ao vivo</span></div>
+        <div class="kr-m">M01</div>
+        <div class="kr-c"><b style="color:var(--laranja)">Capítulo 1</b></div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">3</div>
+        <div class="kr-d">28/09<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">EC 02 · O trabalho de ser humano<span>Com Piero Franceschi</span></div>
+        <div class="kr-m">M02</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">4</div>
+        <div class="kr-d">05/10<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">HO 02 · Do mapa ao alvo<span>3 processos filtrados, o alvo escolhido</span></div>
+        <div class="kr-m">M03</div>
+        <div class="kr-c"><b style="color:var(--laranja)">Capítulo 2</b></div>
+      </div>
+      <div class="kr sk">
+        <div class="kr-w">—</div>
+        <div class="kr-d">12/10<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">Semana pulada · Nossa Senhora Aparecida<span>Feriado nacional. Sem sessão</span></div>
+        <div class="kr-m">—</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">5</div>
+        <div class="kr-d">19/10<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">EC 03 · Quem faz o quê quando a IA entra<span>—</span></div>
+        <div class="kr-m">M04</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ck">
+        <div class="kr-w">6</div>
+        <div class="kr-d">26/10<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">Checkpoint<span>Sem conteúdo novo. Verifica acesso, alvo e o que vai conectar</span></div>
+        <div class="kr-m">M04</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr sk">
+        <div class="kr-w">—</div>
+        <div class="kr-d">02/11<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">Semana pulada · Finados<span>Feriado nacional. Sem sessão</span></div>
+        <div class="kr-m">—</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">7</div>
+        <div class="kr-d">09/11<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">HO 03 · Seu primeiro agente na operação real<span>A sessão de maior risco do programa</span></div>
+        <div class="kr-m">M04</div>
+        <div class="kr-c"><b style="color:var(--laranja)">Capítulo 3</b></div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">8</div>
+        <div class="kr-d">16/11<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">EC 04 · O acordo com o time<span>—</span></div>
+        <div class="kr-m">M05</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">9</div>
+        <div class="kr-d">23/11<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">EC 05 · Cultura AI First<span>Seu time usando IA todo dia</span></div>
+        <div class="kr-m">M05</div>
+        <div class="kr-c">—</div>
+      </div>
+      <div class="kr ">
+        <div class="kr-w">10</div>
+        <div class="kr-d">30/11<span>segunda · 19h–21h</span></div>
+        <div class="kr-s">HO 04 · As regras do jogo + fechamento<span>Consolidação do Plano de Liderança em IA</span></div>
+        <div class="kr-m">M05</div>
+        <div class="kr-c"><b style="color:var(--laranja)">Capítulo 4</b></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Datas derivadas da opção A.</b> Certificado emitido até <b>07/12</b>, sete dias após o último
+      encontro. Acesso ao conteúdo por 6 meses, até cerca de <b>31/05/2027</b>, e o aviso de expiração
+      da régua sai 30 dias antes disso.
+    </div>
+    <div class="note warn">
+      <b>O programa continua com 10 encontros, mas passa a ocupar 12 semanas de calendário.</b> A ementa,
+      o <code>CLAUDE.md</code> e as mensagens da régua dizem "10 semanas". Onde o número aparece como duração
+      do programa vale trocar por "10 encontros semanais", que fica correto nos dois cenários.
+    </div>
+    <div class="note warn">
+      <b>Sem campanha de lançamento, a régua comprime.</b> Faltam 20 dias para o kick-off. Quem comprar
+      dentro dos próximos 6 dias entra no fluxo normal de onboarding; quem comprar depois de 01/09 cai na
+      regra de compressão. O A5, que é a mensagem de compasso de espera, praticamente não vai disparar nesta turma.
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="shead"><div class="snum">05</div>
+      <h2>Os 11 encontros ao vivo, em ordem</h2>
+      <p class="sub">
+        Kick-off na terça 08/09 e as 10 sessões nas segundas seguintes, 19h às 21h. A coluna da direita traz
+        o candidato a professor e o motivo, que em todos os casos é o repertório gravado que o aluno assiste
+        antes da sessão. Conteúdo ao vivo é adaptável, então o tema pode flexionar conforme o professor.
+      </p>
+    </div>
+    <div class="ev">
+      <div class="er ko">
+        <div class="er-c"><div class="cod">KO</div><div class="fmt">abertura</div></div>
+        <div class="er-d"><div class="dt">08/09</div><div class="dw">terça · 19h–21h</div><div class="mo">tudo aberto</div></div>
+        <div class="er-t">Kick-off · Encontro de Abertura<span>Estrutura, calendário, plataforma e o time que acompanha a turma</span></div>
+        <div class="er-p"><span class="st ok">confirmado</span><br>Guilherme Barbosa<span class="wy">AI Lab StartSe. É quem grava a nova introdução, então a mensagem ao vivo e a gravada saem alinhadas</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 01</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d"><div class="dt">14/09</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M01</div></div>
+        <div class="er-t">Perímetro e influência: liderar sem crachá<span>Entrega ao vivo o tópico de perímetro de decisão, que não tem aula gravada</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Daniela Andrade<span class="wy">Gravou as 6 aulas do M01 sobre novo papel do líder, fluência e upskilling. É o repertório exato da sessão</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 01</div><div class="fmt">hands on</div></div>
+        <div class="er-d"><div class="dt">21/09</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M01</div></div>
+        <div class="er-t">Faça em 20 minutos o que hoje te toma 6 horas<span>O aluno constrói a primeira skill e sai com o diagnóstico dos 3 pilares</span><span class="cp">→ Capítulo 1</span></div>
+        <div class="er-p"><span class="st ok">confirmado</span><br>Guilherme Barbosa<span class="wy">AI Lab StartSe. Já conduzia o workshop de Claude Skills, que é exatamente esta sessão</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 02</div><div class="fmt">conversa + Q&amp;A</div></div>
+        <div class="er-d"><div class="dt">28/09</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M02</div></div>
+        <div class="er-t">O trabalho de ser humano<span>Único convidado que a ementa nomeia. Desafio, descoberta e diálogo</span></div>
+        <div class="er-p"><span class="st ok">confirmado</span><br>Piero Franceschi<span class="wy">CEO da StartSe. Gravou as 2 aulas que dão nome ao módulo</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
+        <div class="er-d"><div class="dt">05/10</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M03</div></div>
+        <div class="er-t">Do mapa ao alvo<span>Filtra 3 processos do escopo e fecha o alvo. Entrega ao vivo o critério operacional de gente × máquina</span><span class="cp">→ Capítulo 2</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Renato Grau<span class="wy">Gravou as 5 aulas do M03: as 4 malhas, os 5 eixos, qualidade de dados e a matriz de priorização</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d"><div class="dt">19/10</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M04</div></div>
+        <div class="er-t">Quem faz o quê quando a IA entra<span>Organograma híbrido e agentificação na prática. Pode absorver o tópico de ROI</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Daniela Andrade<span class="wy">Gravou o organograma híbrido e as 2 aulas de agentificação, que são o conteúdo direto da sessão</span></div>
+      </div>
+      <div class="er ck">
+        <div class="er-c"><div class="cod">CHECK</div><div class="fmt">checkpoint</div></div>
+        <div class="er-d"><div class="dt">26/10</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M04</div></div>
+        <div class="er-t">Checkpoint<span>Sem conteúdo novo. Verifica acesso, alvo definido e o que vai conectar antes da construção</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Weslley Silva<span class="wy">AI Lab StartSe. O que se desbloqueia aqui é ferramenta e acesso, e ele é quem conduz o HO 03 na semana seguinte</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 03</div><div class="fmt">hands on</div></div>
+        <div class="er-d"><div class="dt">09/11</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M04</div></div>
+        <div class="er-t">Seu primeiro agente conectado à operação real<span>A sessão de maior risco. Depende do Copiloto P1 e P2 assistidos, que ensinam Claude Desktop e Skills</span><span class="cp">→ Capítulo 3</span></div>
+        <div class="er-p"><span class="st ok">confirmado</span><br>Weslley Silva<span class="wy">AI Lab StartSe. Já conduzia o workshop de MCP e conectores, que é exatamente esta sessão</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d"><div class="dt">16/11</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M05</div></div>
+        <div class="er-t">O acordo com o time<span>Os 4 perfis de resistência e a conversa de metas e tempo liberado</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Daniela Andrade<span class="wy">Gravou as 2 aulas de gestão de resistência e times híbridos. Terceira aparição dela ao vivo, vale avaliar alternância</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d"><div class="dt">23/11</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M05</div></div>
+        <div class="er-t">Cultura AI First: seu time usando IA todo dia<span>Como a experimentação vira rotina depois que a novidade passa</span></div>
+        <div class="er-p"><span class="st pr">proposta</span><br>Gustavo Bodra<span class="wy">Gravou as 2 aulas de cultura de experimentação, incluindo como errar barato</span></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 04</div><div class="fmt">hands on</div></div>
+        <div class="er-d"><div class="dt">30/11</div><div class="dw">segunda · 19h–21h</div><div class="mo">consome M05</div></div>
+        <div class="er-t">As regras do jogo + fechamento<span>Consolida o Plano de Liderança em IA. Entrega ao vivo a governança de bolso</span><span class="cp">→ Capítulo 4</span></div>
+        <div class="er-p"><span class="st ab">escolher</span><br>Gustavo Bodra <span style="color:var(--dim2);font-weight:400">ou</span> Gustavo Torrente<span class="wy">O Bodra gravou ética, risco e governança. O Torrente já deu esta aula ao vivo em 13/08 na T19, com o mesmo título. São pessoas diferentes</span></div>
+      </div>
+    </div>
+    <div class="note">
+      <b>Três confirmados, sete a fechar.</b> Confirmados: Guilherme Barbosa no kick-off e no HO 01, Piero
+      Franceschi no EC 02, Weslley Silva no HO 03. Os dois do AI Lab são internos e não precisam de contrato.
+      Os demais são propostas baseadas em quem gravou o módulo correspondente, o que dá continuidade de voz
+      entre o gravado e o ao vivo.
+    </div>
+    <div class="note warn">
+      <b>A Daniela Andrade aparece em três encontros</b> (EC 01, EC 03 e EC 04), porque ela gravou 10 das 33
+      aulas da trilha e cobre liderança, organograma e resistência. Se a ideia for alternar rostos, o EC 03
+      é o mais fácil de passar para um convidado de mercado, já que é o único dos três que não depende do
+      repertório dela para funcionar.
+    </div>
+    <div class="note warn">
+      <b>Três nomes errados na planilha de gestão.</b> Ela atribui o módulo de diagnóstico e priorização a
+      <b>Silas Serpa</b>, mas quem se apresenta nas gravações é <b>Renato Grau</b>, em 6 das 7 aulas.
+      Escreve <b>Caio Montagner</b>, e a gravação diz <b>Caio Montanheiro</b>. E atribui o módulo de ética e
+      cultura a <b>Gustavo Torrente</b>, quando quem gravou foi <b>Gustavo Bodra</b>, que é outra pessoa.
+      O Torrente é convidado de encontro ao vivo, e é assim que ele aparece em todas as outras fontes.
+      Nenhum nome deve ser anunciado a partir da planilha sem conferência.
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="shead"><div class="snum">06</div>
+      <h2>O que precisa de decisão</h2>
+      <p class="sub">Em ordem de urgência para a turma de 08/09.</p>
+    </div>
+    <div class="rm">
+      <div class="rmr"><div class="t">Convidado do EC 01<span>Precisa estar fechado para 14/09, que é a primeira sessão que conta presença</span></div><div class="q">até 05/09</div><div class="a">contratação</div></div>
+      <div class="rmr"><div class="t">Roteiro da nova introdução<span>Único conteúdo regravável. Precisa estar no ar antes do kick-off de 08/09</span></div><div class="q">até 03/09</div><div class="a">produção</div></div>
+      <div class="rmr"><div class="t">Opção A ou B do calendário<span>Muda a data de fechamento de 30/11 para 16/11 e o dia de duas sessões</span></div><div class="q">até 01/09</div><div class="a">calendário</div></div>
+      <div class="rmr"><div class="t">Confirmar as 7 propostas de professor<span>Seção 05 traz candidato e motivo para cada encontro</span></div><div class="q">até 14/09</div><div class="a">confirmação</div></div>
+      <div class="rmr"><div class="t">Camada opcional entra ou as 9 aulas saem<span>Muda o número de carga horária que vai para a página de venda</span></div><div class="q">até 01/09</div><div class="a">produto</div></div>
+      <div class="rmr"><div class="t">Rótulo do passo 02<span>"Contexto" ou "Mercado". Divergência em 4 dos 5 módulos</span></div><div class="q">até 03/09</div><div class="a">nomenclatura</div></div>
+    </div>
+  </section>
+
+  <footer>
+    Estrutura completa aula por aula, com a auditoria de dependência entre as 52 aulas gravadas, em
+    <code>07-estrutura/estrutura-ai-leadership.html</code>. Calendário calculado a partir de 08/09/2026, com sessões nas segundas.
+    Feriados considerados: 07/09 (seg), 12/10 (seg), 02/11 (seg), 15/11 (dom) e 20/11 (sex).
+  </footer>
+
+</div>
+</body>
+</html>

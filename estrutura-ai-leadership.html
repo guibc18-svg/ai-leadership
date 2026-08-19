@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estrutura do AI Leadership</title>
+<style>
+  :root{
+    --bg:#0C0C0D; --panel:#141416; --panel2:#1B1B1E;
+    --line:#2A2A2E; --line2:#3A3A40;
+    --ink:#F2F1EE; --dim:#9C9CA4; --dim2:#6E6E76;
+    --laranja:#FFA01A; --amarelo:#FFDC6D; --creme:#FFFCF4;
+    --alerta:#FF7A6B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    padding:56px 28px 100px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{font-size:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin-bottom:14px}
+  h1{font-size:46px;line-height:1.1;font-weight:700;letter-spacing:-.02em;margin-bottom:22px}
+  h1 span{color:var(--laranja)}
+  .lead{font-size:21px;line-height:1.55;color:#D6D5D1;max-width:76ch}
+  .lead b{color:var(--amarelo);font-weight:600}
+  h2{font-size:31px;line-height:1.2;font-weight:700;letter-spacing:-.015em;margin-bottom:12px}
+  h3{font-size:19px;font-weight:700;margin-bottom:6px}
+  .sub{font-size:17px;color:var(--dim);max-width:84ch}
+  section{margin-top:78px}
+  .shead{margin-bottom:32px;border-top:1px solid var(--line);padding-top:30px}
+  .snum{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--dim2);margin-bottom:12px}
+  code{font-size:16px;color:#CFCEC9}
+
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .bg{display:inline-block;font-size:16px;font-weight:700;border-radius:6px;padding:3px 10px;white-space:nowrap}
+  .bg.em{background:var(--laranja);color:#0C0C0D}
+  .bg.sug{background:transparent;color:var(--amarelo);border:1px dashed var(--amarelo)}
+  .bg.fac{background:var(--creme);color:#0C0C0D}
+  .bg.gap{background:transparent;color:var(--dim);border:1px dashed var(--dim2)}
+  .lgi{display:flex;align-items:center;gap:9px;font-size:16px;color:var(--dim);
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .ch{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--laranja);
+    border-radius:12px;padding:20px 18px;display:flex;flex-direction:column}
+  .ch .mn{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
+  .ch .mt{font-size:20px;font-weight:700;margin-top:6px;line-height:1.25}
+  .ch .mq{font-size:16px;color:var(--amarelo);margin-top:12px;line-height:1.45}
+  .ch .md{font-size:16px;color:var(--dim);margin-top:10px;line-height:1.45;flex:1}
+  .ch .mh{font-size:16px;font-weight:700;color:var(--laranja);margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+
+  .cw{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .cr{display:grid;grid-template-columns:58px 1fr 104px 1fr;border-bottom:1px solid var(--line)}
+  .cr:last-child{border-bottom:0}
+  .cr>div{padding:16px 18px}
+  .cr-o{border-right:1px solid var(--line);background:rgba(255,255,255,.015);font-size:23px;font-weight:700;color:var(--laranja);text-align:center}
+  .cr-n{font-size:19px;font-weight:700}
+  .cr-n span{display:block;font-size:16px;color:var(--dim);font-weight:400;margin-top:2px}
+  .cr-q{border-left:1px solid var(--line);border-right:1px solid var(--line);font-size:17px;font-weight:700;color:var(--amarelo);text-align:center;white-space:nowrap}
+  .cr-q span{display:block;font-size:16px;color:var(--dim2);font-weight:400}
+  .cr-w{font-size:16px;color:var(--dim);line-height:1.45}
+  .cr-w b{color:var(--creme);font-weight:600}
+  .cr.intl .cr-o{color:var(--amarelo)} .cr.intl{background:rgba(255,252,244,.03)}
+
+  .mod{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:22px;overflow:hidden}
+  .mod-h{padding:24px 26px;border-bottom:1px solid var(--line);background:rgba(255,160,26,.07)}
+  .mod-h .tag{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0C0C0D;background:var(--laranja);border-radius:6px;padding:3px 10px}
+  .mod-h .fw{font-size:16px;color:var(--dim);margin-left:10px}
+  .mod-h h3{font-size:25px;margin-top:14px;margin-bottom:8px}
+  .mod-h .obj{font-size:17px;color:#CFCEC9;max-width:88ch}
+  .mod-h .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .pill{font-size:16px;color:#CFCEC9;background:rgba(255,255,255,.05);border:1px solid var(--line2);border-radius:999px;padding:5px 14px}
+  .pill b{color:var(--amarelo)}
+  .cast{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;border-top:1px solid rgba(255,160,26,.25);padding-top:14px}
+  .cast .cl{font-size:16px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--dim2);margin-right:4px}
+  .cast .cp{font-size:16px;font-weight:600;color:#0C0C0D;background:var(--creme);border-radius:6px;padding:3px 10px;white-space:nowrap}
+  .cast .cp b{font-weight:700;opacity:.55;margin-left:3px}
+  .cast .cp.i{background:transparent;color:var(--amarelo);border:1px solid var(--amarelo)}
+  .cast .ar{color:var(--dim2);font-size:16px}
+
+  table{width:100%;border-collapse:collapse;font-size:17px;table-layout:fixed}
+  col.d{width:66px} col.n{width:44px} col.p{width:164px} col.b{width:104px}
+  th{text-align:left;padding:14px 18px;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);border-bottom:1px solid var(--line2)}
+  td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  .ord{font-size:17px;font-weight:700;color:var(--dim2);text-align:center}
+  .dur{font-size:17px;font-weight:700;color:var(--amarelo);white-space:nowrap}
+  .prof{font-size:16px;font-weight:600;color:var(--creme);line-height:1.3}
+  .prof span{display:block;font-size:16px;color:var(--dim2);font-weight:400;margin-top:1px}
+  .prof.intl{color:var(--amarelo)} .prof.none{color:var(--dim2);font-weight:400;font-style:italic}
+  .aula{font-size:17px;font-weight:600;line-height:1.35}
+  .aula em{display:block;font-style:normal;font-size:16px;font-weight:400;color:var(--amarelo);margin-top:3px}
+  .serve{font-size:16px;color:var(--dim);line-height:1.4}
+  tr.gaprow td{background:rgba(255,255,255,.02)}
+  tr.gaprow .aula{color:var(--dim);font-weight:400;font-style:italic}
+  tr.pairtop td{border-bottom-color:transparent}
+  tr.pairtop td,tr.pairbot td{background:rgba(255,220,109,.045)}
+
+  .dep{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
+  .dep-h{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
+  .dep-h h3{margin:0}
+  .dep-h .k{font-size:16px;font-weight:700;border-radius:6px;padding:3px 10px}
+  .k.hard{background:var(--alerta);color:#0C0C0D}
+  .k.soft{background:var(--amarelo);color:#0C0C0D}
+  .dep-b{padding:20px 24px;font-size:17px;line-height:1.55;color:#CFCEC9}
+  .dep-b .q{display:block;margin:12px 0;padding:12px 16px;border-left:3px solid var(--amarelo);
+    background:rgba(255,220,109,.06);font-size:16px;color:var(--creme);font-style:italic}
+  .dep-l{display:grid;gap:10px;margin-top:14px}
+  .dl{display:flex;gap:14px;font-size:16px;line-height:1.45;color:var(--dim)}
+  .dl .t{flex:0 0 236px;color:var(--creme);font-weight:600}
+  .dl .v{flex:1;min-width:0}
+  .dl .v i{color:var(--amarelo);font-style:italic}
+  .dl .v b{color:var(--creme)}
+
+  .flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;overflow-x:auto}
+  .fl{display:flex;align-items:stretch;gap:0;min-width:900px}
+  .fn{flex:1;background:var(--panel2);border:1px solid var(--line2);border-radius:11px;padding:16px 16px}
+  .fn.root{border-color:var(--amarelo);background:rgba(255,220,109,.08)}
+  .fn .ft{font-size:16px;font-weight:700;line-height:1.3}
+  .fn .fs{font-size:16px;color:var(--dim);margin-top:5px;line-height:1.4}
+  .fa{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:var(--dim2);font-size:19px}
+
+  .cal{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .wk{display:grid;grid-template-columns:142px 1fr 196px 196px;border-bottom:1px solid var(--line)}
+  .wk:last-child{border-bottom:0}
+  .wk>div{padding:15px 18px}
+  .wk-n{border-right:1px solid var(--line);background:rgba(255,255,255,.015);font-weight:700;font-size:17px}
+  .wk-n span{display:block;font-size:16px;color:var(--dim2);font-weight:400;margin-top:2px}
+  .wk-s{font-size:17px}
+  .wk-s span{display:block;font-size:16px;color:var(--dim);margin-top:2px}
+  .wk-m{border-left:1px solid var(--line);font-size:16px}
+  .wk-e{border-left:1px solid var(--line);font-size:16px;color:var(--dim)}
+  .wk.zero{background:rgba(255,252,244,.05)} .wk.ck{background:rgba(255,160,26,.08)}
+  .rel{font-size:16px;font-weight:700;color:#0C0C0D;background:var(--amarelo);border-radius:6px;padding:3px 10px;display:inline-block}
+  .use{font-size:16px;color:var(--dim2)} .cap{font-size:16px;font-weight:700;color:var(--laranja)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .card.fac{border-left:4px solid var(--creme)} .card.orf{border-left:4px solid var(--dim2)}
+  .card .cs{font-size:16px;color:var(--dim);margin-bottom:16px;line-height:1.45}
+  .li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.4}
+  .li:last-child{border-bottom:0}
+  .li .d{color:var(--amarelo);font-weight:700;flex:0 0 56px}
+  .li .w{flex:1} .li .r{color:var(--dim);display:block;margin-top:2px}
+
+  .note{margin-top:24px;background:rgba(255,160,26,.07);border:1px solid rgba(255,160,26,.28);border-radius:12px;padding:22px 24px;font-size:17px;line-height:1.55}
+  .note b{color:var(--amarelo)}
+  .note.warn{background:rgba(255,255,255,.03);border-color:var(--line2)}
+  .note.ok{background:rgba(255,252,244,.05);border-color:rgba(255,252,244,.22)}
+  .note.ok b{color:var(--creme)}
+  .note+.note{margin-top:14px}
+
+  .inv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .icard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center}
+  .ival{font-size:40px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--amarelo)}
+  .ival.o{color:var(--laranja)}
+  .ilab{font-size:17px;font-weight:700;margin-top:12px}
+  .idet{font-size:16px;color:var(--dim);margin-top:5px;line-height:1.45}
+
+  footer{margin-top:78px;border-top:1px solid var(--line);padding-top:26px;font-size:16px;color:var(--dim2)}
+
+  @media (max-width:1080px){
+    body{padding:40px 18px 70px} h1{font-size:34px}
+    .chain,.inv{grid-template-columns:1fr 1fr}
+    .grid2{grid-template-columns:1fr}
+    .wk{grid-template-columns:1fr}
+    .wk-n{border-right:0;border-bottom:1px solid var(--line)}
+    .wk-m,.wk-e{border-left:0;border-top:1px solid var(--line)}
+    .cr{grid-template-columns:48px 1fr}
+    .dl .v{flex:none}
+    .cr-q,.cr-w{border-left:0;border-top:1px solid var(--line)}
+    table{table-layout:auto} .dl{flex-direction:column;gap:2px} .dl .t{flex:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">AI Academy · StartSe</div>
+  <h1>Estrutura do <span>AI Leadership</span></h1>
+  <p class="lead">
+    A ementa do AI Leadership é o container e a metodologia. As <b>52 aulas gravadas do AI Strategy</b>
+    são a matéria-prima. Esta versão passou por <b>auditoria de dependência</b>: nenhuma aula foi
+    deslocada sem verificar, no texto da transcrição, se ela sobrevive fora do lugar original.
+    Os cinco módulos ficam abertos desde o primeiro dia.
+  </p>
+
+  <div class="legend">
+    <div class="lgi"><span class="bg em">ementa</span> tópico que a ementa lista</div>
+    <div class="lgi"><span class="bg sug">sugestão</span> alocação minha, sem tópico na ementa</div>
+    <div class="lgi"><span class="bg fac">faculty</span> camada complementar</div>
+    <div class="lgi"><span class="bg gap">ao vivo</span> tópico da ementa que o encontro ao vivo entrega</div>
+  </div>
+
+  <div class="note ok">
+    <b>Validação automática.</b> 52 de 52 aulas alocadas, sem duplicata. Nenhum par travado ficou
+    separado, nenhuma parte 2 aparece antes da parte 1, e nenhuma aula que depende de uma capacidade
+    aparece antes da aula que ensina essa capacidade. A única pendência conhecida está registrada na
+    seção 03, na aula <i>Do Assistente ao Agente que Age</i>.
+  </div>
+
+  <!-- ═════ 01 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">01</div>
+      <h2>A cadeia de dependências</h2>
+      <p class="sub">Cada módulo responde uma pergunta e entrega o insumo que o próximo consome. É o que decide a ordem.</p>
+    </div>
+    <div class="chain">
+      <div class="ch"><div class="mn">Módulo 01 · Você</div><div class="mt">O líder que a IA exige</div>
+        <div class="mq">O que eu controlo, influencio e recebo como dado?</div>
+        <div class="md">Sem o perímetro delimitado o aluno escolhe um alvo que não é dele.</div>
+        <div class="mh">→ entrega o perímetro</div></div>
+      <div class="ch"><div class="mn">Módulo 02 · Contexto</div><div class="mt">O trabalho de ser humano</div>
+        <div class="mq">Qual é o critério de trabalho de gente e de máquina?</div>
+        <div class="md">É o filtro que o Módulo 03 aplica sobre os processos.</div>
+        <div class="mh">→ entrega o critério</div></div>
+      <div class="ch"><div class="mn">Módulo 03 · Escolha</div><div class="mt">O que muda no meu escopo</div>
+        <div class="mq">Qual processo do meu escopo, e por quê?</div>
+        <div class="md">O mapeamento daqui é pré-requisito de duas aulas do M04.</div>
+        <div class="mh">→ entrega o alvo</div></div>
+      <div class="ch"><div class="mn">Módulo 04 · Plano</div><div class="mt">Redesenho e evidência</div>
+        <div class="mq">Quem faz o quê, e qual a evidência?</div>
+        <div class="md">Concentra a trilha de construção. É onde o Claude Desktop e as Skills são ensinados.</div>
+        <div class="mh">→ entrega o agente e a prova</div></div>
+      <div class="ch"><div class="mn">Módulo 05 · Adoção</div><div class="mt">O time</div>
+        <div class="mq">Como isso pega em gente e sobrevive?</div>
+        <div class="md">Negocia com o time um trabalho que já foi redistribuído.</div>
+        <div class="mh">→ entrega o acordo</div></div>
+    </div>
+    <div class="note">
+      <b>O checkpoint da semana 6 é um portão, não conteúdo.</b> É a única sessão sem conteúdo novo e
+      existe para garantir que ninguém chegue ao HO 03 sem acesso, sem alvo definido ou sem clareza do
+      que vai conectar. Com os módulos abertos desde o dia 1, ele fica mais importante, porque é o único
+      ponto em que alguém verifica se o aluno fez o percurso antes da sessão de construção.
+    </div>
+  </section>
+
+  <!-- ═════ 02 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">02</div>
+      <h2>O elenco, na ordem em que aparece</h2>
+      <p class="sub">Sete professores gravados mais quatro internacionais. A credencial é a que a própria pessoa diz na gravação.</p>
+    </div>
+    <div class="cw">
+      <div class="cr"><div class="cr-o">1</div>
+        <div class="cr-n">Daniela Andrade<span>CEO da AIA Labs · autoapresentada na gravação</span></div>
+        <div class="cr-q">10 aulas<span>2h31</span></div>
+        <div class="cr-w">Abre o programa e é a única em <b>três módulos</b>: M01 (6), M04 (3) e M05 (1). Todas as partes 2 dela abrem com gancho próprio, então são as mais fáceis de realocar</div></div>
+      <div class="cr"><div class="cr-o">2</div>
+        <div class="cr-n">Renato Grau<span>professor da StartSe · autoapresentado na gravação</span></div>
+        <div class="cr-q">7 aulas<span>2h22</span></div>
+        <div class="cr-w">Uma no M01, o <b>M03 inteiro</b>, o roadmap no M04. Auditei as duas deslocadas: os retrovisores delas são internos à própria aula</div></div>
+      <div class="cr"><div class="cr-o">3</div>
+        <div class="cr-n">Gabriel Custódio<span>AI Lab StartSe · assina como "Gabriel aqui"</span></div>
+        <div class="cr-q">7 aulas<span>2h15</span></div>
+        <div class="cr-w">O construtor. <b>Cinco no M04</b> e duas no M05. A cadeia dele é cumulativa: o Copiloto P2 ensina Claude Desktop e Skills, e o resto depende disso. Tem 3 aulas na lista sem lugar</div></div>
+      <div class="cr"><div class="cr-o">4</div>
+        <div class="cr-n">Piero Franceschi<span>CEO da StartSe · autoapresentado na gravação</span></div>
+        <div class="cr-q">2 aulas<span>0h55</span></div>
+        <div class="cr-w">Abre o M02 e dá nome ao módulo. Par travado: a 1.2 abre com "bem-vindos de volta"</div></div>
+      <div class="cr"><div class="cr-o">5</div>
+        <div class="cr-n">Caio Montanheiro<span>pesquisador de IA para decisão · autoapresentado</span></div>
+        <div class="cr-q">2 aulas<span>0h55</span></div>
+        <div class="cr-w">Fecha o M02 com o ponto de inflexão. As outras <b>6 aulas dele foram para a lista sem lugar</b>, porque são decisão de arquitetura e de fornecedor, acima do perímetro do público</div></div>
+      <div class="cr"><div class="cr-o">6</div>
+        <div class="cr-n">Gustavo Bodra<span>confirmado pelo Gui · a planilha traz outro nome</span></div>
+        <div class="cr-q">5 aulas<span>1h38</span></div>
+        <div class="cr-w">Três no M04 (ética e risco, trio que não se separa) e duas no M05 (cultura de experimentação)</div></div>
+      <div class="cr"><div class="cr-o">7</div>
+        <div class="cr-n">Guilherme Barbosa<span>AI Lab StartSe · autoapresentado na gravação</span></div>
+        <div class="cr-q">2 aulas<span>0h04</span></div>
+        <div class="cr-w">Só o onboarding, na lista sem lugar porque descreve o AI Strategy e precisa de regravação</div></div>
+      <div class="cr intl"><div class="cr-o">F</div>
+        <div class="cr-n">Tom Gruber<span>internacional · Faculty</span></div>
+        <div class="cr-q">3 aulas<span>1h00</span></div>
+        <div class="cr-w">Human Agency (vinculado ao M01, é a fonte real do tópico de Humanistic AI) mais o par Boomers e Doomers no M02</div></div>
+      <div class="cr intl"><div class="cr-o">F</div>
+        <div class="cr-n">Steve Blank<span>internacional · Faculty</span></div>
+        <div class="cr-q">3 aulas<span>1h07</span></div>
+        <div class="cr-w">Why is AI important? no M02, mais AI Strategic Roadmap e AI Objectives &amp; Goals no M04</div></div>
+      <div class="cr intl"><div class="cr-o">F</div>
+        <div class="cr-n">Rakshit Agrawal<span>internacional · Faculty</span></div>
+        <div class="cr-q">1 aula<span>0h25</span></div>
+        <div class="cr-w">AI Tech Incumbents, o ecossistema das big techs, vinculado ao M02</div></div>
+      <div class="cr intl"><div class="cr-o">F</div>
+        <div class="cr-n">Janko Altenschmidt<span>internacional · Faculty · a confirmar</span></div>
+        <div class="cr-q">1 aula<span>0h31</span></div>
+        <div class="cr-w">AI &amp; Existential Risks, vinculado ao M02. É a atribuição menos firme das quatro</div></div>
+    </div>
+    <div class="note warn">
+      <b>Três divergências com a planilha de gestão do AI Strategy.</b> A planilha atribui o módulo de
+      diagnóstico e priorização a <b>Silas Serpa</b>, mas quem se apresenta nas gravações é
+      <b>Renato Grau</b>, em 6 das 7 aulas. Escreve <b>Caio Montagner</b>, enquanto a gravação diz
+      <b>Caio Montanheiro</b>. E atribui as aulas de ética e cultura a <b>Gustavo Torrente</b>, quando
+      quem gravou foi <b>Gustavo Bodra</b>, confirmado pelo Gui. São duas pessoas diferentes, e a planilha
+      as trata como uma. Nenhuma das 5 aulas traz o nome falado, então esse era o único ponto do elenco
+      que a transcrição não conseguia validar sozinha.
+    </div>
+  </section>
+
+  <!-- ═════ 03 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">03</div>
+      <h2>Auditoria de dependência</h2>
+      <p class="sub">
+        Antes de mover qualquer aula eu procurei, no texto de todas as 52 transcrições, as referências
+        cruzadas explícitas: "na aula anterior", "como a gente viu", "lembra que", "a gente já falou".
+        Depois li o contexto de cada uma. O que segue é o resultado.
+      </p>
+    </div>
+
+    <div class="dep">
+      <div class="dep-h"><h3>A regra que separa o que pode mover</h3></div>
+      <div class="dep-b">
+        A abertura da parte 2 decide tudo, e o padrão é limpo nas 17 partes que existem na biblioteca.
+        <span class="q">Par travado: a parte 2 abre com retomada. "Bem-vindos de volta", "Oi de novo, Gabriel aqui",
+        "Descansaram?", "Obrigado por ter feito a sua pausa". É <b>uma aula gravada em dois arquivos</b> e precisa ficar adjacente.</span>
+        <span class="q">Par solto: a parte 2 abre com gancho próprio e diz "esse é o conteúdo dessa aula".
+        São <b>duas aulas distintas sob um título compartilhado</b> e podem ser separadas.</span>
+        <div class="dep-l">
+          <div class="dl"><span class="t">11 pares travados</span><span class="v">Piero 1.1→1.2 · Ponto de Inflexão · Os 5 Eixos · Benchmarks · Camadas do Mercado · Gigantes vs Insurgentes · Ética e Risco (trio) · Criando Cultura · Copiloto de Execução · IA para Treinar/Captar</span></div>
+          <div class="dl"><span class="t">6 pares soltos</span><span class="v">Todos os da Daniela Andrade (O Novo Papel, Decidir IA, Upskilling, Gestão de Resistência, IA como Colaborador) mais IA no Comercial</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dep">
+      <div class="dep-h"><h3>Quatro correções que a auditoria forçou</h3><span class="k hard">corrigido</span></div>
+      <div class="dep-b">
+        <div class="dep-l">
+          <div class="dl"><span class="t">Ética e Risco · P3</span><span class="v">Eu tinha posto P1 e P2 no M04 e P3 no M05. O P3 abre com <i>"Vamos voltar, pessoal? ... a gente tem um <b>quarto ponto</b>"</i> e remete aos trade-offs do P2. É um trio contínuo. <b>Os três foram para o M04.</b> O M05 perdeu a cobertura de governança de bolso, que virou lacuna declarada.</span></div>
+          <div class="dl"><span class="t">Reuniões e Decisões com IA</span><span class="v">Eu tinha posto no M01 como preparação do HO 01. A aula constrói skills no Claude (<i>"vamos criar as skills... vem em personalizar, ele abre aqui as habilidades"</i>), e Skills só é ensinado no Copiloto P2. Em semana 1 o aluno bateria numa capacidade que ninguém ensinou. <b>Foi para o M04, depois do Copiloto P2.</b></span></div>
+          <div class="dl"><span class="t">IA como Colaborador · P2</span><span class="v">Eu tinha separado P1 (M04) e P2 (M05), com três semanas entre eles. O par é solto, mas o P2 abre nomeando agentificação como conceito estabelecido. <b>Voltou para o M04, junto do P1.</b></span></div>
+          <div class="dl"><span class="t">Benchmarks Setoriais · P1 e P2</span><span class="v">Eu tinha trazido para o M04 como evidência defensável. É um par travado do arco de mercado do Caio, e leitura crítica de relatório setorial é decisão corporativa. <b>Foi para a lista sem lugar</b>, junto de Camadas do Mercado e Gigantes vs Insurgentes. Isso tirou 52 minutos do módulo mais pesado.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dep">
+      <div class="dep-h"><h3>Três deslocamentos que passaram no teste</h3><span class="k soft">aprovado</span></div>
+      <div class="dep-b">
+        <div class="dep-l">
+          <div class="dl"><span class="t">O que Não Terceirizar<br><span style="color:var(--dim2);font-weight:400">M03 → M01</span></span><span class="v">Único retrovisor é <i>"reforçando o que a gente já falou"</i>, e o que ele reforça (mecânico sim, volante não) foi definido dentro da própria aula. Abre self-contained. Ressalva menor: cita "o documento de cases", que é material de apoio do módulo original.</span></div>
+          <div class="dl"><span class="t">Roadmap de IA<br><span style="color:var(--dim2);font-weight:400">M03 → M04</span></span><span class="v">Único retrovisor é <i>"assim como eu disse"</i>, interno à aula. Pressupõe iniciativas já priorizadas, que é exatamente o que o M03 entrega antes.</span></div>
+          <div class="dl"><span class="t">Gestão de Resistência · P2<br><span style="color:var(--dim2);font-weight:400">M01 → M04</span></span><span class="v">Tem 3 retrovisores e um deles é revelador: <i>"você puxou do mapeamento de processos... lembra que o processo, você mapeou na verdade a tarefa"</i>. Isso aponta para o mapeamento de processos do M03. <b>No AI Strategy essa aula estava no M1 e referenciava conteúdo do M3, ou seja, referência para frente.</b> Movê-la para o M04 corrige um problema que já existia.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dep">
+      <div class="dep-h"><h3>A pendência que sobrou</h3><span class="k hard">decisão sua</span></div>
+      <div class="dep-b">
+        <b style="color:var(--creme)">Do Assistente ao Agente que Age</b> é o último elo da cadeia do Gabriel e abre resumindo o arco inteiro:
+        <span class="q">"Até agora vimos os mais diversos tipos de agentes. Agentes que executam coisas na busca web, agentes que mexem no seu navegador, agentes que mexem no seu sistema de arquivos."</span>
+        A ementa pede essa aula por nome ("Do assistente ao agente que age: conectores e MCP"), então ela fica. Mas carrega três referências a aulas que não estão antes dela:
+        <div class="dep-l">
+          <div class="dl"><span class="t">Claude em Chrome</span><span class="v"><i>"A gente já viu que colocar o Cloud em Chrome eleva o nível"</i>. Só é ensinado em IA para Captar Pessoas P2, que está no M05, depois dela</span></div>
+          <div class="dl"><span class="t">O agente comercial</span><span class="v"><i>"Lembra do nosso agente comercial que tinha vários formatos de e-mails que ele disparava?"</i>. IA no Comercial está na lista sem lugar</span></div>
+          <div class="dl"><span class="t">Busca no LinkedIn</span><span class="v"><i>"como a gente viu aqui, até mesmo um processo tradicional de busca de perfis no LinkedIn"</i>. Mesma origem do primeiro item</span></div>
+        </div>
+        Nenhuma das três sustenta o ensino de conectores e MCP: são três frases de ilustração. Duas saídas.
+        <b>Regravar essas três frases</b> tirando o "a gente já viu", que custa poucos minutos de edição. Ou
+        <b>puxar IA para Captar Pessoas P1 e P2 para o M04</b>, o que resolve o Chrome e o LinkedIn mas põe
+        conteúdo de recrutamento num módulo de plano e evidência, e esvazia o M05. Recomendo a primeira.
+      </div>
+    </div>
+
+    <div class="dep">
+      <div class="dep-h"><h3>A trilha de construção do M04, em ordem obrigatória</h3></div>
+      <div class="dep-b">
+        Essa é a única sequência do programa em que a ordem é técnica, não pedagógica. Cada passo usa o que o anterior instalou.
+      </div>
+      <div class="flow">
+        <div class="fl">
+          <div class="fn"><div class="ft">Copiloto P1</div><div class="fs">Do plano ao agente. Nomeia Claude, Flowise e n8n</div></div>
+          <div class="fa">→</div>
+          <div class="fn root"><div class="ft">Copiloto P2</div><div class="fs"><b>Ensina Claude Desktop e Skills.</b> Base de tudo abaixo</div></div>
+          <div class="fa">→</div>
+          <div class="fn"><div class="ft">Reuniões e Decisões</div><div class="fs">Primeira aplicação de Skills</div></div>
+          <div class="fa">→</div>
+          <div class="fn"><div class="ft">Flowise</div><div class="fs">Paradigma no-code, alternativa ao Claude</div></div>
+          <div class="fa">→</div>
+          <div class="fn"><div class="ft">Do Assistente ao Agente</div><div class="fs">Conectores e MCP. Fecha a trilha</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ 04 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">04</div>
+      <h2>Alocação aula por aula</h2>
+      <p class="sub">
+        33 aulas nos cinco módulos, 8 no Faculty, 11 sem lugar. A linha em amarelo marca par travado.
+        A nota em amarelo abaixo do título diz o resultado da auditoria daquela aula.
+      </p>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 01</span><span class="fw">passo 01 Você</span>
+        <h3>Você — O líder que a IA exige</h3>
+        <p class="obj">Delimitar o perímetro real de decisão e definir o que aprender, delegar ou parar de fazer antes de mobilizar o time.</p>
+        <div class="meta"><span class="pill"><b>7</b> aulas</span><span class="pill"><b>1h49</b> gravado</span><span class="pill">assistir antes da <b>semana 1</b></span><span class="pill">alimenta <b>HO 01 · Capítulo 1</b></span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Daniela Andrade<b>6</b></span><span class="ar">→</span><span class="cp">Renato Grau<b>1</b></span><span class="ar">+</span><span class="cp i">Tom Gruber<b>1</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col class="b"><col style="width:28%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>Origem</th><th>Atende</th></tr></thead>
+        <tbody>
+          <tr class="gaprow"><td class="dur">—</td><td class="prof none">ao vivo</td><td class="aula">entregue no EC 01<em>14/09 · a sessão se chama "Perímetro e influência"</em></td><td><span class="bg gap">ao vivo</span></td><td class="serve">Qual é o seu perímetro: o que controlo, o que influencio e o que é dado. Primeiro item do Capítulo 1</td></tr>
+          <tr><td class="dur">19,1</td><td class="prof">Daniela Andrade<span>CEO da AIA Labs</span></td><td class="aula">O Novo Papel do Líder · P1</td><td><span class="bg em">ementa</span></td><td class="serve">O novo papel do líder: orquestrador de humanos e IA</td></tr>
+          <tr><td class="dur">16,3</td><td class="prof">Daniela Andrade</td><td class="aula">O Novo Papel do Líder · P2<em>par solto: abre com gancho próprio</em></td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico. Os erros estruturais: sem padrão, sem integração, sem controle</td></tr>
+          <tr><td class="dur">12,9</td><td class="prof">Daniela Andrade</td><td class="aula">Decidir IA, não apenas usar · P1</td><td><span class="bg em">ementa</span></td><td class="serve">Quando a IA sai do uso individual para o organizacional</td></tr>
+          <tr><td class="dur">15,3</td><td class="prof">Daniela Andrade</td><td class="aula">Decidir IA, não apenas usar · P2</td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico. Estruturar, orientar e integrar como passos da fluência</td></tr>
+          <tr><td class="dur">12,6</td><td class="prof">Daniela Andrade</td><td class="aula">Upskilling Real · P1</td><td><span class="bg em">ementa</span></td><td class="serve">Upskilling real: o que aprender, delegar e parar de fazer. P1 trata do próprio dia do líder</td></tr>
+          <tr><td class="dur">13,0</td><td class="prof">Daniela Andrade</td><td class="aula">Upskilling Real · P2</td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico, virado para o time</td></tr>
+          <tr><td class="dur">20,1</td><td class="prof">Renato Grau<span>professor da StartSe</span></td><td class="aula">O que Não Terceirizar<em>deslocado do M03 · auditado, não depende de nada</em></td><td><span class="bg em">ementa</span></td><td class="serve">O que não terceirizar e o teste de soberania. A aula usa a palavra soberania</td></tr>
+          <tr><td class="dur">18,0</td><td class="prof intl">Tom Gruber<span>internacional</span></td><td class="aula">Human Agency</td><td><span class="bg fac">faculty</span></td><td class="serve">Humanistic AI: automatizar × augmentar. A ementa cita Gruber neste módulo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 02</span><span class="fw">passo 02 Mercado</span>
+        <h3>Contexto — O trabalho de ser humano</h3>
+        <p class="obj">Entender por que o modelo de trabalho colapsou e o que sobra para o humano. Com Piero Franceschi.</p>
+        <div class="meta"><span class="pill"><b>4</b> aulas</span><span class="pill"><b>1h50</b> gravado</span><span class="pill">assistir antes da <b>semana 3</b></span><span class="pill">alimenta <b>EC 02</b></span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Piero Franceschi<b>2</b></span><span class="ar">→</span><span class="cp">Caio Montanheiro<b>2</b></span><span class="ar">+</span><span class="cp i">Blank<b>1</b></span><span class="ar">→</span><span class="cp i">Agrawal<b>1</b></span><span class="ar">→</span><span class="cp i">Gruber<b>2</b></span><span class="ar">→</span><span class="cp i">Altenschmidt<b>1</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col class="b"><col style="width:28%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>Origem</th><th>Atende</th></tr></thead>
+        <tbody>
+          <tr class="pairtop"><td class="dur">28,2</td><td class="prof">Piero Franceschi<span>CEO da StartSe</span></td><td class="aula">O Trabalho de Ser Humano · 1.1</td><td><span class="bg em">ementa</span></td><td class="serve">A Era da Reconfiguração. Taylor, os três Cs, a perda do monopólio dos verbos humanos</td></tr>
+          <tr class="pairbot"><td class="dur">26,8</td><td class="prof">Piero Franceschi</td><td class="aula">O Trabalho de Ser Humano · 1.2<em>par travado: abre com "bem-vindos de volta"</em></td><td><span class="bg em">ementa</span></td><td class="serve">Desafio, descoberta e diálogo. Mais o líder corajoso</td></tr>
+          <tr class="gaprow"><td class="dur">—</td><td class="prof none">ao vivo</td><td class="aula">o critério operacional sai no HO 02<em>05/10 · o Piero dá a base conceitual no gravado</em></td><td><span class="bg gap">ao vivo</span></td><td class="serve">Trabalho de gente × trabalho de máquina: o critério. Falta o critério operacional de triagem</td></tr>
+          <tr class="pairtop"><td class="dur">26,1</td><td class="prof">Caio Montanheiro<span>pesquisador de IA para decisão</span></td><td class="aula">Ponto de Inflexão · P1</td><td><span class="bg em">ementa</span></td><td class="serve">O ponto de inflexão: o que mudou entre 2023 e hoje</td></tr>
+          <tr class="pairbot"><td class="dur">28,6</td><td class="prof">Caio Montanheiro</td><td class="aula">Ponto de Inflexão · P2<em>par travado: abre com "obrigado por ter feito a sua pausa"</em></td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico. Catalisadores e a deflação do custo de token</td></tr>
+          <tr><td class="dur">26,0</td><td class="prof intl">Steve Blank<span>internacional</span></td><td class="aula">Why is AI important?</td><td><span class="bg fac">faculty</span></td><td class="serve">Modelos de base como sistema operacional</td></tr>
+          <tr><td class="dur">25,1</td><td class="prof intl">Rakshit Agrawal<span>internacional</span></td><td class="aula">AI Tech Incumbents</td><td><span class="bg fac">faculty</span></td><td class="serve">O ecossistema das big techs, citado na descrição do Faculty</td></tr>
+          <tr><td class="dur">20,0</td><td class="prof intl">Tom Gruber<span>internacional</span></td><td class="aula">AI Boomers Views</td><td><span class="bg fac">faculty</span></td><td class="serve">O lado otimista do debate</td></tr>
+          <tr><td class="dur">22,1</td><td class="prof intl">Tom Gruber<span>internacional</span></td><td class="aula">AI Doomers Views</td><td><span class="bg fac">faculty</span></td><td class="serve">O lado pessimista. Par obrigatório com o anterior</td></tr>
+          <tr><td class="dur">31,0</td><td class="prof intl">Janko Altenschmidt<span>internacional · a confirmar</span></td><td class="aula">AI &amp; Existential Risks</td><td><span class="bg fac">faculty</span></td><td class="serve">Riscos da tecnologia, citado na descrição do Faculty</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 03</span><span class="fw">passo 03 Planejamento</span>
+        <h3>Escolha — O que muda no meu escopo</h3>
+        <p class="obj">Mapear os processos do próprio escopo, filtrar candidatos reais e escolher o alvo.</p>
+        <div class="meta"><span class="pill"><b>5</b> aulas</span><span class="pill"><b>1h40</b> gravado</span><span class="pill">assistir antes da <b>semana 4</b></span><span class="pill">alimenta <b>HO 02 · Capítulo 2</b></span><span class="pill">encaixe <b>1:1</b> com a ementa</span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Renato Grau<b>5</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col class="b"><col style="width:28%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>Origem</th><th>Atende</th></tr></thead>
+        <tbody>
+          <tr><td class="dur">25,7</td><td class="prof">Renato Grau<span>professor da StartSe</span></td><td class="aula">Processos candidatos à IA</td><td><span class="bg em">ementa</span></td><td class="serve">Como mapear processos candidatos. O que mais dói raramente é o melhor candidato</td></tr>
+          <tr class="pairtop"><td class="dur">15,5</td><td class="prof">Renato Grau</td><td class="aula">Os 5 Eixos de Maturidade · P1</td><td><span class="bg em">ementa</span></td><td class="serve">Os 5 eixos e o barril de tábuas</td></tr>
+          <tr class="pairbot"><td class="dur">17,2</td><td class="prof">Renato Grau</td><td class="aula">Os 5 Eixos de Maturidade · P2<em>par travado: P2 corta no meio de uma frase de P1</em></td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico. Notas 1, 3 e 5 por eixo</td></tr>
+          <tr><td class="dur">20,6</td><td class="prof">Renato Grau</td><td class="aula">Qualidade dos Dados</td><td><span class="bg em">ementa</span></td><td class="serve">Por que dados ruins destroem qualquer estratégia</td></tr>
+          <tr><td class="dur">21,2</td><td class="prof">Renato Grau</td><td class="aula">Matriz de Priorização<em>auditado: "freios" e "quick win" são internos à aula</em></td><td><span class="bg em">ementa</span></td><td class="serve">Matriz de impacto, viabilidade e urgência</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 04</span><span class="fw">passo 04 Execução</span>
+        <h3>Plano — Redesenho e evidência</h3>
+        <p class="obj">Transformar o alvo escolhido em desenho de trabalho, com evidência defensável.</p>
+        <div class="meta"><span class="pill"><b>12</b> aulas</span><span class="pill"><b>3h54</b> gravado</span><span class="pill">assistir antes da <b>semana 5</b></span><span class="pill">alimenta <b>EC 03, Checkpoint e HO 03 · Capítulo 3</b></span><span class="pill">o <b>módulo mais pesado</b></span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Daniela Andrade<b>3</b></span><span class="ar">→</span><span class="cp">Renato Grau<b>1</b></span><span class="ar">→</span><span class="cp">Gustavo Bodra<b>3</b></span><span class="ar">→</span><span class="cp">Gabriel Custódio<b>5</b></span><span class="ar">+</span><span class="cp i">Steve Blank<b>2</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col class="b"><col style="width:28%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>Origem</th><th>Atende</th></tr></thead>
+        <tbody>
+          <tr><td class="dur">14,9</td><td class="prof">Daniela Andrade<span>CEO da AIA Labs</span></td><td class="aula">Gestão de Resistência e Times Híbridos · P2<em>deslocado do M01 · precisa do mapeamento de processos do M03, que agora vem antes</em></td><td><span class="bg em">ementa</span></td><td class="serve">Organograma híbrido: agente, IA, humano e líder</td></tr>
+          <tr class="pairtop"><td class="dur">15,5</td><td class="prof">Daniela Andrade</td><td class="aula">IA como Colaborador · Agentificação · P1</td><td><span class="bg em">ementa</span></td><td class="serve">IA como colaborador: da ferramenta à agentificação</td></tr>
+          <tr class="pairbot"><td class="dur">13,8</td><td class="prof">Daniela Andrade</td><td class="aula">IA como Colaborador · Agentificação · P2<em>trazido de volta do M05 para ficar junto do P1</em></td><td><span class="bg em">ementa</span></td><td class="serve">Quem decide, quem executa e quem audita. Orçamento de tokens</td></tr>
+          <tr><td class="dur">21,8</td><td class="prof">Renato Grau<span>professor da StartSe</span></td><td class="aula">Roadmap de IA<em>deslocado do M03 · auditado, não depende de nada</em></td><td><span class="bg em">ementa</span></td><td class="serve">Roadmap em fases. Dono, prazo e checkpoint</td></tr>
+          <tr class="pairtop"><td class="dur">19,3</td><td class="prof">Gustavo Bodra<span>não se nomeia na gravação</span></td><td class="aula">Ética e Risco como Decisão de Negócio · P1</td><td><span class="bg sug">sugestão</span></td><td class="serve">Mapa de riscos e a alçada do Capítulo 3</td></tr>
+          <tr class="pairtop"><td class="dur">22,1</td><td class="prof">Gustavo Bodra</td><td class="aula">Ética e Risco como Decisão de Negócio · P2</td><td><span class="bg sug">sugestão</span></td><td class="serve">Trade-offs e decisão intencional</td></tr>
+          <tr class="pairbot"><td class="dur">20,2</td><td class="prof">Gustavo Bodra</td><td class="aula">Ética e Risco como Decisão de Negócio · P3<em>trio travado: P3 abre citando "um quarto ponto" e os trade-offs de P2</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Aceitável × inaceitável. O que quebraria a operação</td></tr>
+          <tr class="pairtop"><td class="dur">19,3</td><td class="prof">Gabriel Custódio<span>AI Lab StartSe</span></td><td class="aula">Construindo seu Copiloto de Execução · P1<em>entrada da trilha de construção. Pressupõe um plano, que o M03 entrega</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Prepara o HO 03. Um plano não é execução</td></tr>
+          <tr class="pairbot"><td class="dur">28,2</td><td class="prof">Gabriel Custódio</td><td class="aula">Construindo seu Copiloto de Execução · P2<em>par travado · <b>ensina Claude Desktop e Skills</b>, base de tudo o que vem depois</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Mesmo tópico. Construção passo a passo</td></tr>
+          <tr><td class="dur">22,0</td><td class="prof">Gabriel Custódio</td><td class="aula">Reuniões e Decisões com IA<em>deslocado do M01 para cá · usa Skills, que só o Copiloto P2 ensina</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Decisões e preparação de reunião com agente</td></tr>
+          <tr><td class="dur">20,6</td><td class="prof">Gabriel Custódio</td><td class="aula">Automatizando atendimento com Flowise<em>o Copiloto P1 já nomeia Flowise e n8n como alternativas</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Caminho no-code para quem não vai construir via Claude</td></tr>
+          <tr><td class="dur">16,5</td><td class="prof">Gabriel Custódio</td><td class="aula">Do Assistente ao Agente que Age<em>⚠ mantém 3 referências penduradas. Ver auditoria</em></td><td><span class="bg em">ementa</span></td><td class="serve">Conectores e MCP</td></tr>
+          <tr class="gaprow"><td class="dur">—</td><td class="prof none">ao vivo</td><td class="aula">entregue no EC 03 ou no HO 03<em>19/10 ou 09/11 · conteúdo ao vivo, adaptável</em></td><td><span class="bg gap">ao vivo</span></td><td class="serve">Como medir ROI em iniciativas de IA em escala reduzida. A pasta "Do Diagnóstico ao ROI" não tem aula de ROI</td></tr>
+          <tr><td class="dur">23,1</td><td class="prof intl">Steve Blank<span>internacional</span></td><td class="aula">AI Strategic Roadmap</td><td><span class="bg fac">faculty</span></td><td class="serve">Estratégia de IA, citado na descrição do Faculty</td></tr>
+          <tr><td class="dur">17,8</td><td class="prof intl">Steve Blank<span>internacional</span></td><td class="aula">AI Objectives &amp; Goals</td><td><span class="bg fac">faculty</span></td><td class="serve">Visão e objetivos, mais auditoria de capacidades</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mod">
+      <div class="mod-h">
+        <span class="tag">Módulo 05</span><span class="fw">passo 05 Aplicação</span>
+        <h3>Adoção — O time</h3>
+        <p class="obj">Fazer a mudança pegar em gente real e sustentá-la depois que a novidade passa.</p>
+        <div class="meta"><span class="pill"><b>5</b> aulas</span><span class="pill"><b>1h22</b> gravado</span><span class="pill">assistir antes da <b>semana 8</b></span><span class="pill">alimenta <b>EC 04, EC 05 e HO 04 · Capítulo 4</b></span></div>
+        <div class="cast"><span class="cl">Elenco</span><span class="cp">Daniela Andrade<b>1</b></span><span class="ar">→</span><span class="cp">Gustavo Bodra<b>2</b></span><span class="ar">→</span><span class="cp">Gabriel Custódio<b>2</b></span></div>
+      </div>
+      <table>
+        <colgroup><col class="d"><col class="p"><col><col class="b"><col style="width:28%"></colgroup>
+        <thead><tr><th>Min</th><th>Professor</th><th>Aula</th><th>Origem</th><th>Atende</th></tr></thead>
+        <tbody>
+          <tr><td class="dur">17,1</td><td class="prof">Daniela Andrade<span>CEO da AIA Labs</span></td><td class="aula">Gestão de Resistência e Times Híbridos · P1<em>par solto: abre com gancho próprio. Depende só do M01, que já passou</em></td><td><span class="bg em">ementa</span></td><td class="serve">Os 4 perfis de resistência. Resistência como sinal</td></tr>
+          <tr class="pairtop"><td class="dur">18,7</td><td class="prof">Gustavo Bodra<span>não se nomeia na gravação</span></td><td class="aula">Criando Cultura de Experimentação · P1</td><td><span class="bg em">ementa</span></td><td class="serve">Criando cultura de experimentação. Errar pequeno antes de errar grande</td></tr>
+          <tr class="pairbot"><td class="dur">17,4</td><td class="prof">Gustavo Bodra</td><td class="aula">Criando Cultura de Experimentação · P2<em>par travado: abre com "descansaram?"</em></td><td><span class="bg em">ementa</span></td><td class="serve">Mesmo tópico. Como errar barato</td></tr>
+          <tr class="pairtop"><td class="dur">15,5</td><td class="prof">Gabriel Custódio<span>AI Lab StartSe</span></td><td class="aula">IA para Treinar Pessoas · P1<em>usa Skills, ensinado no M04, que já passou</em></td><td><span class="bg em">ementa</span></td><td class="serve">IA para times: performance, feedback e experimentação</td></tr>
+          <tr class="pairbot"><td class="dur">13,3</td><td class="prof">Gabriel Custódio</td><td class="aula">IA para Captar Pessoas · P2<em>par travado: P1 fecha prometendo a volta. O tema (recrutamento) sai do escopo, mas viaja com o P1</em></td><td><span class="bg sug">sugestão</span></td><td class="serve">Agente de prospecção. Entra por dependência, não por tópico</td></tr>
+          <tr class="gaprow"><td class="dur">—</td><td class="prof none">ao vivo</td><td class="aula">entregue no HO 04<em>30/11 · a sessão se chama "As regras do jogo"</em></td><td><span class="bg gap">ao vivo</span></td><td class="serve">Governança de bolso: as regras do jogo para um time pequeno. O ritual quinzenal do Capítulo 4 não existe gravado</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═════ 05 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">05</div>
+      <h2>Como isso cai nas 10 semanas</h2>
+      <p class="sub">Os cinco módulos ficam abertos desde o primeiro dia. A coluna do meio mostra o que o aluno precisa ter assistido para a sessão render.</p>
+    </div>
+    <div class="cal">
+      <div class="wk zero"><div class="wk-n">Semana 0<span>Abertura</span></div>
+        <div class="wk-s">Encontro de Abertura<span>Estrutura, calendário, plataforma e time</span></div>
+        <div class="wk-m"><span class="rel">tudo aberto</span></div><div class="wk-e">Não conta para as 10</div></div>
+      <div class="wk"><div class="wk-n">Semana 1<span>Estudo de caso</span></div>
+        <div class="wk-s">EC 01 · Perímetro e influência<span>Liderar sem crachá</span></div>
+        <div class="wk-m"><span class="rel">assistir M01</span></div><div class="wk-e">—</div></div>
+      <div class="wk"><div class="wk-n">Semana 2<span>Hands-on</span></div>
+        <div class="wk-s">HO 01 · Faça em 20 min o que hoje te toma 6h<span>Primeira skill construída, ao vivo</span></div>
+        <div class="wk-m"><span class="use">M01 em uso</span></div><div class="wk-e"><span class="cap">Capítulo 1</span></div></div>
+      <div class="wk"><div class="wk-n">Semana 3<span>Conversa</span></div>
+        <div class="wk-s">EC 02 · O trabalho de ser humano<span>Com Piero Franceschi</span></div>
+        <div class="wk-m"><span class="rel">assistir M02</span></div><div class="wk-e">—</div></div>
+      <div class="wk"><div class="wk-n">Semana 4<span>Hands-on</span></div>
+        <div class="wk-s">HO 02 · Do mapa ao alvo<span>3 processos filtrados, o alvo escolhido</span></div>
+        <div class="wk-m"><span class="rel">assistir M03</span></div><div class="wk-e"><span class="cap">Capítulo 2</span></div></div>
+      <div class="wk"><div class="wk-n">Semana 5<span>Estudo de caso</span></div>
+        <div class="wk-s">EC 03 · Quem faz o quê quando a IA entra<span>—</span></div>
+        <div class="wk-m"><span class="rel">assistir M04</span></div><div class="wk-e">—</div></div>
+      <div class="wk ck"><div class="wk-n">Semana 6<span>Checkpoint</span></div>
+        <div class="wk-s">Checkpoint<span>Sem conteúdo novo. Verifica acesso, alvo e o que vai conectar</span></div>
+        <div class="wk-m"><span class="use">M04 em uso</span></div><div class="wk-e">Portão do HO 03</div></div>
+      <div class="wk"><div class="wk-n">Semana 7<span>Hands-on</span></div>
+        <div class="wk-s">HO 03 · Seu primeiro agente na operação real<span>A sessão de maior risco do programa</span></div>
+        <div class="wk-m"><span class="use">M04 em uso</span></div><div class="wk-e"><span class="cap">Capítulo 3</span></div></div>
+      <div class="wk"><div class="wk-n">Semana 8<span>Estudo de caso</span></div>
+        <div class="wk-s">EC 04 · O acordo com o time<span>—</span></div>
+        <div class="wk-m"><span class="rel">assistir M05</span></div><div class="wk-e">—</div></div>
+      <div class="wk"><div class="wk-n">Semana 9<span>Estudo de caso</span></div>
+        <div class="wk-s">EC 05 · Cultura AI First<span>Seu time usando IA todo dia</span></div>
+        <div class="wk-m"><span class="use">M05 em uso</span></div><div class="wk-e">—</div></div>
+      <div class="wk"><div class="wk-n">Semana 10<span>Hands-on</span></div>
+        <div class="wk-s">HO 04 · As regras do jogo<span>Fechamento e consolidação do plano</span></div>
+        <div class="wk-m"><span class="use">M05 em uso</span></div><div class="wk-e"><span class="cap">Capítulo 4</span></div></div>
+    </div>
+    <div class="note warn">
+      <b>O M04 concentra 3h54 de 10h35, e é a única trilha de ordem obrigatória.</b> Quem chegar no HO 03
+      sem ter visto o Copiloto P1 e P2 não vai ter Claude Desktop nem Skills, e não constrói o agente.
+      Esse é o pré-requisito real que o checkpoint da semana 6 precisa verificar, mais do que acesso à plataforma.
+    </div>
+    <div class="note">
+      <b>Consequência na régua de comunicação.</b> Três mensagens dizem que os módulos são liberados antes
+      de cada encontro: o A2, o A4 e o B5. A ementa e o <code>CLAUDE.md</code> também. Com liberação total
+      no dia 1 esse texto fica errado e precisa virar recomendação de ritmo. A formulação que sobrevive é
+      <b>"vale assistir ao módulo antes de entrar no encontro"</b>, que já é a regra canônica do projeto.
+    </div>
+  </section>
+
+  <!-- ═════ 06 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">06</div>
+      <h2>Faculty Internacional e aulas sem lugar</h2>
+      <p class="sub">As 8 aulas EXTRA somam exatamente as 3h03 do Faculty. As 11 restantes não entram em nenhum módulo sem forçar.</p>
+    </div>
+    <div class="grid2">
+      <div class="card fac">
+        <h3>Faculty Internacional · 3h03</h3>
+        <p class="cs">Camada complementar aberta desde o início. Cada aula está vinculada ao módulo onde faz mais sentido, sem virar pré-requisito dele.</p>
+        <div class="li"><span class="d">18,0</span><span class="w">Human Agency<span class="r">Tom Gruber · agência humana → M01</span></span></div>
+        <div class="li"><span class="d">26,0</span><span class="w">Why is AI important?<span class="r">Steve Blank · contexto de tecnologia → M02</span></span></div>
+        <div class="li"><span class="d">25,1</span><span class="w">AI Tech Incumbents<span class="r">Rakshit Agrawal · ecossistema das big techs → M02</span></span></div>
+        <div class="li"><span class="d">20,0</span><span class="w">AI Boomers Views<span class="r">Tom Gruber · o lado otimista → M02</span></span></div>
+        <div class="li"><span class="d">22,1</span><span class="w">AI Doomers Views<span class="r">Tom Gruber · o lado pessimista → M02</span></span></div>
+        <div class="li"><span class="d">31,0</span><span class="w">AI &amp; Existential Risks<span class="r">Janko Altenschmidt · riscos da tecnologia → M02</span></span></div>
+        <div class="li"><span class="d">23,1</span><span class="w">AI Strategic Roadmap<span class="r">Steve Blank · estratégia de IA → M04</span></span></div>
+        <div class="li"><span class="d">17,8</span><span class="w">AI Objectives &amp; Goals<span class="r">Steve Blank · visão e objetivos → M04</span></span></div>
+      </div>
+      <div class="card orf">
+        <h3>Sem lugar · 3h45</h3>
+        <p class="cs">Nenhuma foi forçada dentro de módulo. Os pares travados saem sempre juntos, para não deixar meia aula solta.</p>
+        <div class="li"><span class="d">52,8</span><span class="w">Camadas do Mercado · P1 e P2<span class="r">Caio Montanheiro · build or buy de infra, modelo e dados. Decisão de arquitetura corporativa, acima do perímetro do público</span></span></div>
+        <div class="li"><span class="d">58,8</span><span class="w">Gigantes vs Insurgentes · P1 e P2<span class="r">Caio Montanheiro · escolha de ecossistema e fornecedor, risco de lock-in. Mesma razão</span></span></div>
+        <div class="li"><span class="d">52,8</span><span class="w">Benchmarks Setoriais · P1 e P2<span class="r">Caio Montanheiro · leitura crítica de relatório setorial. Fecha o arco de mercado dele, que sai inteiro</span></span></div>
+        <div class="li"><span class="d">38,2</span><span class="w">IA no Comercial · P1 e P2<span class="r">Gabriel Custódio · recorte de vendas. A ementa não organiza nenhum módulo por área de negócio</span></span></div>
+        <div class="li"><span class="d">18,4</span><span class="w">IA no Financeiro e Análise de Dados<span class="r">Gabriel Custódio · recorte de financeiro. Mesma razão</span></span></div>
+        <div class="li"><span class="d">4,1</span><span class="w">Onboarding · Boas-vindas e Estrutura do Curso<span class="r">Guilherme Barbosa · falam de 8 semanas, workshops e AI Strategy Plan. Precisam de regravação</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ 07 ═════ -->
+  <section>
+    <div class="shead">
+      <div class="snum">07</div>
+      <h2>A carga horária</h2>
+      <p class="sub">Duração somada do cabeçalho das 52 transcrições.</p>
+    </div>
+    <div class="inv">
+      <div class="icard"><div class="ival">17h24</div><div class="ilab">Biblioteca inteira</div><div class="idet">52 aulas, incluindo as 2 do Piero</div></div>
+      <div class="icard"><div class="ival o">3h03</div><div class="ilab">Faculty Internacional</div><div class="idet">As 8 aulas EXTRA, batendo no minuto</div></div>
+      <div class="icard"><div class="ival">10h35</div><div class="ilab">Nos cinco módulos</div><div class="idet">33 aulas que passaram na auditoria</div></div>
+      <div class="icard"><div class="ival o">3h45</div><div class="ilab">Sem lugar</div><div class="idet">11 aulas fora do perímetro do público</div></div>
+    </div>
+    <div class="note">
+      <b>Os 17h de módulos gravados já incluem o Faculty.</b> A biblioteca inteira dá 17h24 e o Faculty são
+      3h03 dela. A leitura correta é 37h = 17h de gravado, com o Faculty dentro, mais 20h ao vivo. Os 3h03
+      já estão contados nos 17h, então não há o que somar por cima.
+    </div>
+    <div class="note warn">
+      <b>Os cinco módulos entregam 10h35.</b> Para chegar aos 17h anunciados seria preciso contar o Faculty
+      (3h03) e as 11 aulas sem lugar (3h45), o que fecha 17h23. Ou seja, o número de venda de 17h só fecha
+      contando a camada opcional. Os quatro tópicos da ementa sem aula gravada são entregues nos encontros
+      ao vivo, que são adaptáveis, então não entram nessa conta.
+    </div>
+  </section>
+
+  <footer>
+    Fontes: <code>04-fontes/ementa-versao-final.docx</code> e <code>01-regua/ementa.md</code> para a estrutura,
+    <code>06-transcription/</code> para as 52 transcrições, <code>ai strategy/context/03-professores.md</code>
+    para os nomes. Durações e referências cruzadas extraídas do texto de cada transcrição.
+    Nenhum arquivo de conteúdo foi movido ou alterado.
+  </footer>
+
+</div>
+</body>
+</html>

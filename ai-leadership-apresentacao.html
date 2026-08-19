@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Leadership · visão geral</title>
+<style>
+:root{--bg:#0C0C0D;--panel:#141416;--panel2:#1B1B1E;--line:#2A2A2E;--line2:#3A3A40;
+ --ink:#F2F1EE;--dim:#9C9CA4;--dim2:#6E6E76;--laranja:#FFA01A;--amarelo:#FFDC6D;--creme:#FFFCF4;--alerta:#FF7A6B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 110px}
+
+/* nav */
+.top{position:sticky;top:0;z-index:50;background:rgba(12,12,13,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.brand{font-size:19px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--laranja)}
+.nav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.nav button{font:600 17px/1 inherit;color:var(--dim);background:transparent;border:1px solid transparent;
+ border-radius:999px;padding:10px 18px;cursor:pointer}
+.nav button:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.nav button.on{color:#0C0C0D;background:var(--laranja);border-color:var(--laranja)}
+
+.pane{display:none;padding-top:52px}
+.pane.on{display:block}
+.eyebrow{font-size:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin-bottom:14px}
+h1{font-size:44px;line-height:1.1;font-weight:700;letter-spacing:-.02em;margin-bottom:20px}
+h1 span{color:var(--laranja)}
+h2{font-size:29px;line-height:1.2;font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+h3{font-size:19px;font-weight:700;margin-bottom:6px}
+.lead{font-size:21px;line-height:1.55;color:#D6D5D1;max-width:74ch}
+.lead b{color:var(--amarelo);font-weight:600}
+.sub{font-size:17px;color:var(--dim);max-width:82ch}
+.blk{margin-top:56px}
+.blk-h{border-top:1px solid var(--line);padding-top:28px;margin-bottom:26px}
+
+/* cards genéricos */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card.acc{border-top:4px solid var(--laranja)}
+.card .kl{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2)}
+.card h3{margin-top:8px}
+.card p{font-size:16px;color:var(--dim);line-height:1.5;margin-top:8px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center}
+.stat .v{font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--amarelo)}
+.stat .v.o{color:var(--laranja)}
+.stat .l{font-size:17px;font-weight:700;margin-top:11px}
+.stat .d{font-size:16px;color:var(--dim);margin-top:5px;line-height:1.45}
+
+/* passos */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.st{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 18px;display:flex;flex-direction:column}
+.st .n{font-size:16px;font-weight:700;color:var(--dim2);letter-spacing:.1em}
+.st .t{font-size:19px;font-weight:700;margin-top:6px}
+.st .q{font-size:16px;color:var(--amarelo);margin-top:10px;line-height:1.45;flex:1}
+.st .o{font-size:16px;font-weight:700;color:var(--laranja);margin-top:12px;border-top:1px solid var(--line);padding-top:11px}
+
+/* ementa */
+.mod{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.mh{display:grid;grid-template-columns:118px 1fr 116px 120px 168px;align-items:center;border-bottom:1px solid var(--line);background:rgba(255,160,26,.06)}
+.mh>div{padding:18px 18px}
+.mh .cod{font-size:19px;font-weight:700;color:var(--laranja);border-right:1px solid var(--line)}
+.mh .nm{font-size:19px;font-weight:700}
+.mh .nm span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:3px}
+.mh .qt,.mh .tm{border-left:1px solid var(--line);text-align:center}
+.mh .qt b,.mh .tm b{display:block;font-size:23px;font-weight:700;color:var(--amarelo);line-height:1.1}
+.mh .qt i,.mh .tm i{font-style:normal;font-size:16px;color:var(--dim2)}
+.mh .ac{border-left:1px solid var(--line);font-size:16px;color:var(--dim);text-align:center}
+.mh .ac b{color:var(--creme);font-weight:700}
+.mod.zero .mh{background:rgba(255,252,244,.06)} .mod.zero .cod{color:var(--creme)}
+.mod.fac .mh{background:rgba(255,252,244,.04)} .mod.opt .mh{background:rgba(255,255,255,.02)}
+.mod.opt .cod,.mod.fac .cod{color:var(--creme)}
+.ml{padding:6px 0}
+.li{display:grid;grid-template-columns:64px 168px 1fr;border-bottom:1px solid var(--line)}
+.li:last-child{border-bottom:0}
+.li>div{padding:12px 18px}
+.li .d{font-size:16px;font-weight:700;color:var(--amarelo);text-align:right}
+.li .p{font-size:16px;color:var(--dim)}
+.li .a{font-size:17px}
+.li .a em{font-style:normal;color:var(--dim);font-size:16px}
+.tot{display:grid;grid-template-columns:118px 1fr 116px 120px 168px;background:rgba(255,160,26,.12);border:1px solid rgba(255,160,26,.4);border-radius:14px;align-items:center;margin-top:20px}
+.tot>div{padding:20px 18px}
+.tot .cod{font-size:17px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--laranja)}
+.tot .nm{font-size:19px;font-weight:700}
+.tot .qt,.tot .tm{text-align:center} .tot .qt b,.tot .tm b{display:block;font-size:26px;font-weight:700;color:var(--amarelo)}
+.tot .qt i,.tot .tm i{font-style:normal;font-size:16px;color:var(--dim2)}
+.tot .ac{text-align:center;font-size:16px;color:var(--dim)}
+
+/* calendário */
+.cals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mo{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mo-h{padding:16px 18px;font-size:19px;font-weight:700;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line)}
+.dow span{padding:9px 0;text-align:center;font-size:16px;color:var(--dim2);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cd{min-height:62px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 5px;text-align:center}
+.cd b{font-size:17px;font-weight:600;color:#CFCEC9}
+.cd .cl{display:block;font-size:16px;margin-top:3px;line-height:1.15}
+.cd.out{background:rgba(0,0,0,.25)}
+.cd.ses{background:rgba(255,160,26,.18)} .cd.ses b{color:var(--ink);font-weight:700} .cd.ses .cl{color:var(--laranja);font-weight:700}
+.cd.ko{background:rgba(255,252,244,.16)} .cd.ko b{color:#fff;font-weight:700} .cd.ko .cl{color:var(--creme);font-weight:700}
+.cd.ck{background:rgba(255,220,109,.14)} .cd.ck .cl{color:var(--amarelo);font-weight:700}
+.cd.skp{background:rgba(255,122,107,.13)} .cd.skp b{color:var(--alerta);text-decoration:line-through} .cd.skp .cl{color:var(--alerta)}
+.cd.fer{background:rgba(255,122,107,.05)} .cd.fer b{color:var(--dim2)} .cd.fer .cl{color:var(--dim2)}
+.leg{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.lg{display:flex;align-items:center;gap:9px;font-size:16px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.sw{width:15px;height:15px;border-radius:4px;flex:0 0 auto}
+
+/* lista de encontros */
+.ev{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.er{display:grid;grid-template-columns:104px 174px 1fr 128px;border-bottom:1px solid var(--line)}
+.er:last-child{border-bottom:0}
+.er>div{padding:16px 18px}
+.er-c{border-right:1px solid var(--line);background:rgba(255,255,255,.02);text-align:center}
+.er-c .cod{font-size:19px;font-weight:700;color:var(--laranja)} .er-c .fmt{font-size:16px;color:var(--dim2);margin-top:3px}
+.er-d{border-right:1px solid var(--line);font-size:19px;font-weight:700}
+.er-d span{display:block;font-size:16px;color:var(--dim2);font-weight:400}
+.er-t{border-right:1px solid var(--line);font-size:17px;font-weight:600;line-height:1.35}
+.er-t span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:3px}
+.er-m{font-size:16px;color:var(--dim);text-align:center}
+.er-m b{display:block;color:var(--amarelo);font-weight:700}
+.er.ko{background:rgba(255,252,244,.05)} .er.ko .cod{color:var(--creme)}
+.er.ck{background:rgba(255,220,109,.07)}
+
+/* perfil de professor */
+.pf{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;margin-bottom:14px}
+.pf-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;padding:20px 24px;border-bottom:1px solid var(--line);background:rgba(255,160,26,.06)}
+.pf-h .cd2{font-size:17px;font-weight:700;color:#0C0C0D;background:var(--laranja);border-radius:6px;padding:3px 11px}
+.pf-h .dt{font-size:16px;color:var(--dim)}
+.pf-h h3{margin:0;font-size:21px}
+.pf-b{padding:20px 24px}
+.pf-b .need{font-size:17px;color:var(--amarelo);font-weight:600;margin-bottom:14px}
+.chklist{display:grid;gap:10px}
+.chklist div{display:flex;gap:12px;font-size:17px;line-height:1.45;color:#CFCEC9}
+.chklist div::before{content:"";flex:0 0 19px;height:19px;margin-top:3px;border:2px solid var(--line2);border-radius:4px}
+.pf.done .pf-h{background:rgba(255,252,244,.06)} .pf.done .cd2{background:var(--creme)}
+.pf-b .fix{font-size:17px;color:var(--creme);font-weight:600}
+.pf-b .fix span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:5px}
+
+/* agenda */
+.ag{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ar{display:grid;grid-template-columns:52px 1fr 132px 160px;border-bottom:1px solid var(--line)}
+.ar:last-child{border-bottom:0}
+.ar>div{padding:17px 18px}
+.ar-n{border-right:1px solid var(--line);background:rgba(255,255,255,.02);text-align:center;font-size:17px;font-weight:700;color:var(--dim2)}
+.ar-t{font-size:17px;font-weight:600}
+.ar-t span{display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:4px}
+.ar-p{border-left:1px solid var(--line);text-align:center;font-size:17px;font-weight:700;color:var(--laranja)}
+.ar-w{border-left:1px solid var(--line);font-size:16px;color:var(--dim)}
+.ar.urg .ar-p{color:var(--alerta)}
+
+.note{margin-top:22px;background:rgba(255,160,26,.07);border:1px solid rgba(255,160,26,.28);border-radius:12px;padding:22px 24px;font-size:17px;line-height:1.55}
+.note b{color:var(--amarelo)}
+.note.warn{background:rgba(255,255,255,.03);border-color:var(--line2)}
+code{font-size:16px;color:#CFCEC9}
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:24px;font-size:16px;color:var(--dim2)}
+
+@media (max-width:1080px){
+ .wrap{padding:0 18px 80px} h1{font-size:33px}
+ .g3,.g4,.g2,.steps,.cals{grid-template-columns:1fr 1fr}
+ .mh,.tot{grid-template-columns:1fr 1fr} .mh .cod,.mh .qt,.mh .tm,.mh .ac{border:0}
+ .li,.er,.ar{grid-template-columns:1fr} .li>div,.er>div,.ar>div{border:0}
+ .li .d{text-align:left}
+}
+</style></head>
+<body>
+<div class="top"><div class="in">
+  <div class="brand">AI <span>Leadership</span></div>
+  <nav class="nav">
+    <button class="on" data-t="pan" onclick="go('pan')">Panorama</button>
+    <button data-t="eme" onclick="go('eme')">Ementa</button>
+    <button data-t="cal" onclick="go('cal')">Calendário</button>
+    <button data-t="pro" onclick="go('pro')">Professores</button>
+    <button data-t="age" onclick="go('age')">Agenda</button>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<!-- ══════ PANORAMA ══════ -->
+<section class="pane on" id="p-pan">
+  <div class="eyebrow">AI Academy · StartSe</div>
+  <h1>Um programa para o líder que já usa IA<br>e precisa <span>levar isso para o time</span></h1>
+  <p class="lead">
+    O AI Leadership trata do que acontece <b>entre as pessoas</b> quando a IA entra: resistência,
+    redistribuição de trabalho, metas, performance e o acordo que sustenta a mudança depois que a
+    novidade passa. O aluno sai com um plano escrito para o próprio time, não com um framework.
+  </p>
+
+  <div class="blk">
+    <div class="g4">
+      <div class="stat"><div class="v">10</div><div class="l">Encontros ao vivo</div><div class="d">Mais o kick-off. Todos de 2h, 19h às 21h</div></div>
+      <div class="stat"><div class="v o">35</div><div class="l">Aulas gravadas</div><div class="d">10h40 na trilha principal</div></div>
+      <div class="stat"><div class="v">4</div><div class="l">Capítulos</div><div class="d">O Plano de Liderança em IA, um por hands on</div></div>
+      <div class="stat"><div class="v o">12</div><div class="l">Semanas</div><div class="d">De 08/09 a 30/11 de 2026</div></div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>Para quem é</h2>
+      <p class="sub">O recorte é estreito de propósito. O programa assume que a pessoa já usa IA e não perde tempo com iniciação.</p></div>
+    <div class="g3">
+      <div class="card acc"><div class="kl">Público</div><h3>Gerente e coordenador</h3>
+        <p>Com equipe de 5 a 15 pessoas. Também profissional sênior que lidera por influência, sem time formal sob gestão.</p></div>
+      <div class="card acc"><div class="kl">Pré-requisito</div><h3>Já usa IA no trabalho</h3>
+        <p>Uso corrente de ferramentas de IA no próprio dia. Não é programa de iniciação, e os hands on partem desse pressuposto.</p></div>
+      <div class="card acc"><div class="kl">O que muda</div><h3>Sai do individual</h3>
+        <p>Quem já usa IA sozinho aprende a mobilizar o time, definir alçada e sustentar a mudança.</p></div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>A jornada, em cinco passos</h2>
+      <p class="sub">Cada módulo responde uma pergunta e entrega o insumo que o próximo consome. É por isso que a ordem importa.</p></div>
+    <div class="steps">
+      <div class="st"><div class="n">01</div><div class="t">Você</div><div class="q">O que eu controlo, influencio e recebo como dado?</div><div class="o">→ o perímetro</div></div>
+      <div class="st"><div class="n">02</div><div class="t">Contexto</div><div class="q">Qual é o critério de trabalho de gente e de máquina?</div><div class="o">→ o critério</div></div>
+      <div class="st"><div class="n">03</div><div class="t">Escolha</div><div class="q">Qual processo do meu escopo, e por quê?</div><div class="o">→ o alvo</div></div>
+      <div class="st"><div class="n">04</div><div class="t">Plano</div><div class="q">Quem faz o quê, e qual a evidência?</div><div class="o">→ o agente e a prova</div></div>
+      <div class="st"><div class="n">05</div><div class="t">Adoção</div><div class="q">Como isso pega em gente e sobrevive?</div><div class="o">→ o acordo</div></div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>Como o programa funciona</h2></div>
+    <div class="g2">
+      <div class="card"><div class="kl">Assíncrono</div><h3>Aulas gravadas</h3>
+        <p>Seis módulos abertos desde o primeiro dia, mais uma camada internacional. O aluno assiste no ritmo dele, e cada módulo prepara um encontro específico.</p></div>
+      <div class="card"><div class="kl">Ao vivo</div><h3>Encontros semanais</h3>
+        <p>Toda segunda, 19h às 21h, pelo Zoom via plataforma. Três formatos: estudo de caso, hands on e um checkpoint no meio do percurso.</p></div>
+    </div>
+    <div class="note">
+      <b>O entregável é a espinha do programa.</b> Cada hands on produz um capítulo do Plano de Liderança
+      em IA, e nenhum termina sem o capítulo preenchido. Não existe prova: a avaliação é o artefato.
+    </div>
+    <div class="note warn">
+      <b>Certificado.</b> Presença em no mínimo 5 dos 10 encontros, com 50 minutos de permanência em cada
+      um e acesso sempre pela plataforma. Emitido em até 7 dias após o último encontro, pela StartSe University.
+      Conteúdo disponível por 6 meses depois do fim.
+    </div>
+  </div>
+</section>
+
+<!-- ══════ EMENTA ══════ -->
+<section class="pane" id="p-eme">
+  <div class="eyebrow">Guia · Ementa</div>
+  <h1>Seis módulos gravados,<br><span>10h40</span> na trilha principal</h1>
+  <p class="lead">
+    Os módulos ficam abertos desde o primeiro dia. A coluna da direita mostra o <b>acumulado</b>, para
+    dar a noção de quanto o aluno já percorreu ao chegar em cada etapa.
+  </p>
+
+  <div class="blk">
+      <div class="mod zero">
+        <div class="mh">
+          <div class="cod">Módulo 0</div>
+          <div class="nm">Boas-vindas e como funciona<span>A regravar. Explica a jornada, os 4 capítulos do plano e os três formatos de sessão</span></div>
+          <div class="qt"><b>2</b><i>aulas</i></div>
+          <div class="tm"><b>0h04</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>2 aulas · 0h04</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">—</div><div class="p">Guilherme Barbosa</div><div class="a">Boas-vindas <em>· a produzir</em></div></div><div class="li"><div class="d">—</div><div class="p">Guilherme Barbosa</div><div class="a">Como funciona o AI Leadership <em>· a produzir</em></div></div></div>
+      </div>
+      <div class="mod ">
+        <div class="mh">
+          <div class="cod">Módulo 1</div>
+          <div class="nm">Você · O líder que a IA exige<span>Delimitar o próprio perímetro de decisão e definir o que aprender, delegar ou parar de fazer</span></div>
+          <div class="qt"><b>7</b><i>aulas</i></div>
+          <div class="tm"><b>1h49</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>9 aulas · 1h53</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">19,1</div><div class="p">Daniela Andrade</div><div class="a">O Novo Papel do Líder · P1</div></div><div class="li"><div class="d">16,3</div><div class="p">Daniela Andrade</div><div class="a">O Novo Papel do Líder · P2</div></div><div class="li"><div class="d">12,9</div><div class="p">Daniela Andrade</div><div class="a">Decidir IA, não apenas usar · P1</div></div><div class="li"><div class="d">15,3</div><div class="p">Daniela Andrade</div><div class="a">Decidir IA, não apenas usar · P2</div></div><div class="li"><div class="d">12,6</div><div class="p">Daniela Andrade</div><div class="a">Upskilling Real · P1</div></div><div class="li"><div class="d">13,0</div><div class="p">Daniela Andrade</div><div class="a">Upskilling Real · P2</div></div><div class="li"><div class="d">20,1</div><div class="p">Renato Grau</div><div class="a">O que Não Terceirizar <em>· mecânico × volante e o teste de soberania</em></div></div></div>
+      </div>
+      <div class="mod ">
+        <div class="mh">
+          <div class="cod">Módulo 2</div>
+          <div class="nm">Contexto · O trabalho de ser humano<span>Entender por que o modelo de trabalho colapsou e o que sobra para o humano</span></div>
+          <div class="qt"><b>4</b><i>aulas</i></div>
+          <div class="tm"><b>1h50</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>13 aulas · 3h43</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">28,2</div><div class="p">Piero Franceschi</div><div class="a">O Trabalho de Ser Humano · 1.1 <em>· a Era da Reconfiguração</em></div></div><div class="li"><div class="d">26,8</div><div class="p">Piero Franceschi</div><div class="a">O Trabalho de Ser Humano · 1.2 <em>· desafio, descoberta e diálogo</em></div></div><div class="li"><div class="d">26,1</div><div class="p">Caio Montanheiro</div><div class="a">Ponto de Inflexão · P1 <em>· o que mudou entre 2023 e hoje</em></div></div><div class="li"><div class="d">28,6</div><div class="p">Caio Montanheiro</div><div class="a">Ponto de Inflexão · P2 <em>· a deflação do custo de token</em></div></div></div>
+      </div>
+      <div class="mod ">
+        <div class="mh">
+          <div class="cod">Módulo 3</div>
+          <div class="nm">Escolha · O que muda no meu escopo<span>Mapear os processos do próprio escopo, filtrar candidatos reais e escolher o alvo</span></div>
+          <div class="qt"><b>5</b><i>aulas</i></div>
+          <div class="tm"><b>1h40</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>18 aulas · 5h23</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">25,7</div><div class="p">Renato Grau</div><div class="a">Processos candidatos à IA <em>· as 4 malhas</em></div></div><div class="li"><div class="d">15,5</div><div class="p">Renato Grau</div><div class="a">Os 5 Eixos de Maturidade · P1</div></div><div class="li"><div class="d">17,2</div><div class="p">Renato Grau</div><div class="a">Os 5 Eixos de Maturidade · P2</div></div><div class="li"><div class="d">20,6</div><div class="p">Renato Grau</div><div class="a">Qualidade dos Dados</div></div><div class="li"><div class="d">21,2</div><div class="p">Renato Grau</div><div class="a">Matriz de Priorização <em>· impacto, viabilidade e urgência</em></div></div></div>
+      </div>
+      <div class="mod ">
+        <div class="mh">
+          <div class="cod">Módulo 4</div>
+          <div class="nm">Plano · Redesenho e evidência<span>Transformar o alvo escolhido em desenho de trabalho, com evidência defensável</span></div>
+          <div class="qt"><b>12</b><i>aulas</i></div>
+          <div class="tm"><b>3h54</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>30 aulas · 9h18</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">14,9</div><div class="p">Daniela Andrade</div><div class="a">Gestão de Resistência e Times Híbridos · P2 <em>· organograma híbrido</em></div></div><div class="li"><div class="d">15,5</div><div class="p">Daniela Andrade</div><div class="a">IA como Colaborador · Agentificação · P1</div></div><div class="li"><div class="d">13,8</div><div class="p">Daniela Andrade</div><div class="a">IA como Colaborador · Agentificação · P2 <em>· quem decide e quem audita</em></div></div><div class="li"><div class="d">21,8</div><div class="p">Renato Grau</div><div class="a">Roadmap de IA <em>· roadmap em fases</em></div></div><div class="li"><div class="d">19,3</div><div class="p">Gustavo Bodra</div><div class="a">Ética e Risco como Decisão de Negócio · P1</div></div><div class="li"><div class="d">22,1</div><div class="p">Gustavo Bodra</div><div class="a">Ética e Risco como Decisão de Negócio · P2</div></div><div class="li"><div class="d">20,2</div><div class="p">Gustavo Bodra</div><div class="a">Ética e Risco como Decisão de Negócio · P3 <em>· aceitável × inaceitável</em></div></div><div class="li"><div class="d">19,3</div><div class="p">Gabriel Custódio</div><div class="a">Construindo seu Copiloto de Execução · P1</div></div><div class="li"><div class="d">28,2</div><div class="p">Gabriel Custódio</div><div class="a">Construindo seu Copiloto de Execução · P2 <em>· ensina Claude Desktop e Skills</em></div></div><div class="li"><div class="d">22,0</div><div class="p">Gabriel Custódio</div><div class="a">Reuniões e Decisões com IA</div></div><div class="li"><div class="d">20,6</div><div class="p">Gabriel Custódio</div><div class="a">Automatizando atendimento com Flowise <em>· alternativa no-code</em></div></div><div class="li"><div class="d">16,5</div><div class="p">Gabriel Custódio</div><div class="a">Do Assistente ao Agente que Age <em>· conectores e MCP</em></div></div></div>
+      </div>
+      <div class="mod ">
+        <div class="mh">
+          <div class="cod">Módulo 5</div>
+          <div class="nm">Adoção · O time<span>Fazer a mudança pegar em gente real e sustentá-la depois que a novidade passa</span></div>
+          <div class="qt"><b>5</b><i>aulas</i></div>
+          <div class="tm"><b>1h22</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>35 aulas · 10h40</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">17,1</div><div class="p">Daniela Andrade</div><div class="a">Gestão de Resistência e Times Híbridos · P1 <em>· os 4 perfis de resistência</em></div></div><div class="li"><div class="d">18,7</div><div class="p">Gustavo Bodra</div><div class="a">Criando Cultura de Experimentação · P1</div></div><div class="li"><div class="d">17,4</div><div class="p">Gustavo Bodra</div><div class="a">Criando Cultura de Experimentação · P2</div></div><div class="li"><div class="d">15,5</div><div class="p">Gabriel Custódio</div><div class="a">IA para Treinar Pessoas · P1 <em>· IA para times</em></div></div><div class="li"><div class="d">13,3</div><div class="p">Gabriel Custódio</div><div class="a">IA para Captar Pessoas · P2</div></div></div>
+      </div>
+      <div class="mod fac">
+        <div class="mh">
+          <div class="cod">Faculty</div>
+          <div class="nm">Faculty Internacional<span>Camada complementar aberta desde o início, com conteúdo licenciado. Não é pré-requisito de nenhum encontro</span></div>
+          <div class="qt"><b>8</b><i>aulas</i></div>
+          <div class="tm"><b>3h03</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>43 aulas · 13h43</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">18,0</div><div class="p">Tom Gruber</div><div class="a">Human Agency <em>· agência humana · vinculado ao M1</em></div></div><div class="li"><div class="d">26,0</div><div class="p">Steve Blank</div><div class="a">Why is AI important? <em>· vinculado ao M2</em></div></div><div class="li"><div class="d">25,1</div><div class="p">Rakshit Agrawal</div><div class="a">AI Tech Incumbents <em>· ecossistema das big techs · M2</em></div></div><div class="li"><div class="d">20,0</div><div class="p">Tom Gruber</div><div class="a">AI Boomers Views <em>· M2</em></div></div><div class="li"><div class="d">22,1</div><div class="p">Tom Gruber</div><div class="a">AI Doomers Views <em>· M2</em></div></div><div class="li"><div class="d">31,0</div><div class="p">Janko Altenschmidt</div><div class="a">AI &amp; Existential Risks <em>· M2</em></div></div><div class="li"><div class="d">23,1</div><div class="p">Steve Blank</div><div class="a">AI Strategic Roadmap <em>· vinculado ao M4</em></div></div><div class="li"><div class="d">17,8</div><div class="p">Steve Blank</div><div class="a">AI Objectives &amp; Goals <em>· M4</em></div></div></div>
+      </div>
+      <div class="mod opt">
+        <div class="mh">
+          <div class="cod">Opcional</div>
+          <div class="nm">Aplicação e mercado<span>Fora do caminho crítico. Nenhum encontro depende dessas aulas</span></div>
+          <div class="qt"><b>9</b><i>aulas</i></div>
+          <div class="tm"><b>3h41</b><i>de aula</i></div>
+          <div class="ac">acumulado<br><b>52 aulas · 17h24</b></div>
+        </div>
+        <div class="ml"><div class="li"><div class="d">52,8</div><div class="p">Caio Montanheiro</div><div class="a">Camadas do Mercado · P1 e P2 <em>· build or buy de infra, modelo e dados</em></div></div><div class="li"><div class="d">58,8</div><div class="p">Caio Montanheiro</div><div class="a">Gigantes vs Insurgentes · P1 e P2 <em>· ecossistema, fornecedor e lock-in</em></div></div><div class="li"><div class="d">52,8</div><div class="p">Caio Montanheiro</div><div class="a">Benchmarks Setoriais · P1 e P2 <em>· ler relatório de mercado sem cair em viés</em></div></div><div class="li"><div class="d">38,2</div><div class="p">Gabriel Custódio</div><div class="a">IA no Comercial · P1 e P2 <em>· recorte de vendas</em></div></div><div class="li"><div class="d">18,4</div><div class="p">Gabriel Custódio</div><div class="a">IA no Financeiro e Análise de Dados <em>· recorte de financeiro</em></div></div></div>
+      </div>
+    <div class="tot">
+      <div class="cod">Total</div>
+      <div class="nm">Biblioteca completa<span style="display:block;font-size:16px;font-weight:400;color:var(--dim);margin-top:3px">Trilha principal 10h40 · com Faculty 13h43 · com a camada opcional 17h24</span></div>
+      <div class="qt"><b>52</b><i>aulas</i></div>
+      <div class="tm"><b>17h24</b><i>de aula</i></div>
+      <div class="ac">mais <b>20h ao vivo</b></div>
+    </div>
+    <div class="note">
+      <b>Onde cada módulo é consumido.</b> O Módulo 1 alimenta os dois primeiros encontros, o Módulo 2 o
+      terceiro, o Módulo 3 o quarto, o Módulo 4 os três do meio e o Módulo 5 os três últimos. O Faculty
+      Internacional não é pré-requisito de nenhum, e a camada opcional está fora do caminho crítico.
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>Os 11 encontros ao vivo</h2>
+      <p class="sub">
+        <b style="color:var(--creme)">Estudo de caso</b> é um convidado do mercado narrando execução real, incluindo o que deu errado, com o computador fechado.
+        <b style="color:var(--creme)">Hands on</b> é o aluno construindo com a tela aberta, e cada um entrega um capítulo do plano.
+        O <b style="color:var(--creme)">checkpoint</b> é a única sessão sem conteúdo novo, e existe para ninguém chegar na construção do agente sem acesso ou sem alvo.
+      </p></div>
+    <div class="ev">
+      <div class="er ko">
+        <div class="er-c"><div class="cod">KO</div><div class="fmt">abertura</div></div>
+        <div class="er-d">08/09<span>terça · 19h–21h</span></div>
+        <div class="er-t">Kick-off · Encontro de Abertura<span>Estrutura, calendário, plataforma e time</span></div>
+        <div class="er-m">tudo aberto</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 01</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">14/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Perímetro e influência: liderar sem crachá</div>
+        <div class="er-m">M1</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 01</div><div class="fmt">hands on</div></div>
+        <div class="er-d">21/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Faça em 20 minutos o que hoje te toma 6 horas</div>
+        <div class="er-m">M1<b>Capítulo 1</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 02</div><div class="fmt">conversa + Q&amp;A</div></div>
+        <div class="er-d">28/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">O trabalho de ser humano<span>com Piero Franceschi</span></div>
+        <div class="er-m">M2</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
+        <div class="er-d">05/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Do mapa ao alvo</div>
+        <div class="er-m">M3<b>Capítulo 2</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">19/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Quem faz o quê quando a IA entra</div>
+        <div class="er-m">M4</div>
+      </div>
+      <div class="er ck">
+        <div class="er-c"><div class="cod">CHECK</div><div class="fmt">checkpoint</div></div>
+        <div class="er-d">26/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Checkpoint<span>Sem conteúdo novo. Desbloqueia antes da construção</span></div>
+        <div class="er-m">M4</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 03</div><div class="fmt">hands on</div></div>
+        <div class="er-d">09/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Seu primeiro agente conectado à operação real</div>
+        <div class="er-m">M4<b>Capítulo 3</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">16/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">O acordo com o time</div>
+        <div class="er-m">M5</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">23/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Cultura AI First: seu time usando IA todo dia</div>
+        <div class="er-m">M5</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 04</div><div class="fmt">hands on</div></div>
+        <div class="er-d">30/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">As regras do jogo + fechamento</div>
+        <div class="er-m">M5<b>Capítulo 4</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CALENDÁRIO ══════ -->
+<section class="pane" id="p-cal">
+  <div class="eyebrow">Guia · Calendário</div>
+  <h1>Kick-off em <span>08/09</span>,<br>depois toda segunda-feira</h1>
+  <p class="lead">
+    O primeiro encontro é na <b>terça, 08/09</b>. A partir da semana seguinte, todos os encontros
+    acontecem nas <b>segundas</b>, 19h às 21h. Duas segundas caem em feriado nacional e foram puladas.
+  </p>
+
+  <div class="blk">
+    <div class="cals">
+        <div class="mo">
+          <div class="mo-h">Setembro 2026</div>
+          <div class="dow"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
+          <div class="grid"><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd "><b>2</b></div><div class="cd "><b>3</b></div><div class="cd "><b>4</b></div><div class="cd "><b>5</b></div><div class="cd "><b>6</b></div><div class="cd fer"><b>7</b><span class="cl">feriado</span></div><div class="cd ko"><b>8</b><span class="cl">Kick-off</span></div><div class="cd "><b>9</b></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd "><b>12</b></div><div class="cd "><b>13</b></div><div class="cd ses"><b>14</b><span class="cl">EC 01</span></div><div class="cd "><b>15</b></div><div class="cd "><b>16</b></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd "><b>19</b></div><div class="cd "><b>20</b></div><div class="cd ses"><b>21</b><span class="cl">HO 01</span></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd "><b>26</b></div><div class="cd "><b>27</b></div><div class="cd ses"><b>28</b><span class="cl">EC 02</span></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div></div>
+        </div>
+        <div class="mo">
+          <div class="mo-h">Outubro 2026</div>
+          <div class="dow"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
+          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd "><b>2</b></div><div class="cd "><b>3</b></div><div class="cd "><b>4</b></div><div class="cd ses"><b>5</b><span class="cl">HO 02</span></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd "><b>9</b></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd skp"><b>12</b><span class="cl">Aparecida</span></div><div class="cd "><b>13</b></div><div class="cd "><b>14</b></div><div class="cd "><b>15</b></div><div class="cd "><b>16</b></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd ses"><b>19</b><span class="cl">EC 03</span></div><div class="cd "><b>20</b></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd "><b>23</b></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd ck"><b>26</b><span class="cl">Check</span></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd "><b>30</b></div><div class="cd "><b>31</b></div><div class="cd out"></div></div>
+        </div>
+        <div class="mo">
+          <div class="mo-h">Novembro 2026</div>
+          <div class="dow"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
+          <div class="grid"><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd "><b>1</b></div><div class="cd skp"><b>2</b><span class="cl">Finados</span></div><div class="cd "><b>3</b></div><div class="cd "><b>4</b></div><div class="cd "><b>5</b></div><div class="cd "><b>6</b></div><div class="cd "><b>7</b></div><div class="cd "><b>8</b></div><div class="cd ses"><b>9</b><span class="cl">HO 03</span></div><div class="cd "><b>10</b></div><div class="cd "><b>11</b></div><div class="cd "><b>12</b></div><div class="cd "><b>13</b></div><div class="cd "><b>14</b></div><div class="cd fer"><b>15</b><span class="cl">feriado</span></div><div class="cd ses"><b>16</b><span class="cl">EC 04</span></div><div class="cd "><b>17</b></div><div class="cd "><b>18</b></div><div class="cd "><b>19</b></div><div class="cd fer"><b>20</b><span class="cl">feriado</span></div><div class="cd "><b>21</b></div><div class="cd "><b>22</b></div><div class="cd ses"><b>23</b><span class="cl">EC 05</span></div><div class="cd "><b>24</b></div><div class="cd "><b>25</b></div><div class="cd "><b>26</b></div><div class="cd "><b>27</b></div><div class="cd "><b>28</b></div><div class="cd "><b>29</b></div><div class="cd ses"><b>30</b><span class="cl">HO 04</span></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div><div class="cd out"></div></div>
+        </div>
+    </div>
+    <div class="leg">
+      <div class="lg"><span class="sw" style="background:rgba(255,252,244,.5)"></span>Kick-off</div>
+      <div class="lg"><span class="sw" style="background:rgba(255,160,26,.6)"></span>Encontro que conta presença</div>
+      <div class="lg"><span class="sw" style="background:rgba(255,220,109,.45)"></span>Checkpoint</div>
+      <div class="lg"><span class="sw" style="background:rgba(255,122,107,.45)"></span>Semana pulada por feriado</div>
+      <div class="lg"><span class="sw" style="background:rgba(255,122,107,.14)"></span>Outro feriado</div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="blk-h"><h2>As 11 datas</h2></div>
+    <div class="ev">
+      <div class="er ko">
+        <div class="er-c"><div class="cod">KO</div><div class="fmt">abertura</div></div>
+        <div class="er-d">08/09<span>terça · 19h–21h</span></div>
+        <div class="er-t">Kick-off · Encontro de Abertura<span>Estrutura, calendário, plataforma e time</span></div>
+        <div class="er-m">tudo aberto</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 01</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">14/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Perímetro e influência: liderar sem crachá</div>
+        <div class="er-m">M1</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 01</div><div class="fmt">hands on</div></div>
+        <div class="er-d">21/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Faça em 20 minutos o que hoje te toma 6 horas</div>
+        <div class="er-m">M1<b>Capítulo 1</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 02</div><div class="fmt">conversa + Q&amp;A</div></div>
+        <div class="er-d">28/09<span>segunda · 19h–21h</span></div>
+        <div class="er-t">O trabalho de ser humano<span>com Piero Franceschi</span></div>
+        <div class="er-m">M2</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 02</div><div class="fmt">hands on</div></div>
+        <div class="er-d">05/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Do mapa ao alvo</div>
+        <div class="er-m">M3<b>Capítulo 2</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 03</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">19/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Quem faz o quê quando a IA entra</div>
+        <div class="er-m">M4</div>
+      </div>
+      <div class="er ck">
+        <div class="er-c"><div class="cod">CHECK</div><div class="fmt">checkpoint</div></div>
+        <div class="er-d">26/10<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Checkpoint<span>Sem conteúdo novo. Desbloqueia antes da construção</span></div>
+        <div class="er-m">M4</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 03</div><div class="fmt">hands on</div></div>
+        <div class="er-d">09/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Seu primeiro agente conectado à operação real</div>
+        <div class="er-m">M4<b>Capítulo 3</b></div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 04</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">16/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">O acordo com o time</div>
+        <div class="er-m">M5</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">EC 05</div><div class="fmt">estudo de caso</div></div>
+        <div class="er-d">23/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">Cultura AI First: seu time usando IA todo dia</div>
+        <div class="er-m">M5</div>
+      </div>
+      <div class="er ">
+        <div class="er-c"><div class="cod">HO 04</div><div class="fmt">hands on</div></div>
+        <div class="er-d">30/11<span>segunda · 19h–21h</span></div>
+        <div class="er-t">As regras do jogo + fechamento</div>
+        <div class="er-m">M5<b>Capítulo 4</b></div>
+      </div>
+    </div>
+    <div class="note">
+      <b>Datas derivadas.</b> Último encontro em 30/11. Certificado até <b>07/12</b>. Acesso ao conteúdo
+      até cerca de <b>31/05/2027</b>.
+    </div>
+    <div class="note warn">
+      <b>Por que pular as duas semanas.</b> 12/10 e 02/11 são feriados nacionais que caem na segunda.
+      Pular protege o critério de presença de 5 dos 10 e mantém o hábito de um único dia da semana.
+      A alternativa é mover as duas para terça e fechar em 16/11, duas semanas mais cedo, com o custo de
+      pedir presença na terça logo após feriado.
+    </div>
+    <div class="note warn">
+      <b>São 10 encontros em 12 semanas de calendário.</b> Onde a comunicação disser "10 semanas" como
+      duração, vale trocar por "10 encontros semanais".
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PROFESSORES ══════ -->
+<section class="pane" id="p-pro">
+  <div class="eyebrow">Guia · Professores</div>
+  <h1>O perfil que cada<br>encontro <span>pede</span></h1>
+  <p class="lead">
+    Sem nome, só perfil. Cada encontro tem um checklist do que a pessoa precisa ter vivido para
+    conduzir aquela sessão. Conteúdo ao vivo é adaptável, então o tema flexiona conforme quem assume.
+  </p>
+
+  <div class="blk">
+      <div class="pf done">
+        <div class="pf-h"><span class="cd2">KO</span><span class="dt">08/09</span><h3>Kick-off · Encontro de Abertura</h3></div>
+        <div class="pf-b"><div class="fix">Time interno da StartSe.<span>Quem apresenta a plataforma, o calendário e o time. É a mesma pessoa que grava o Módulo 0, para a mensagem ao vivo e a gravada saírem alinhadas.</span></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">EC 01</span><span class="dt">14/09</span><h3>Perímetro e influência: liderar sem crachá</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem já liderou sem ter autoridade formal.</div><div class="chklist"><div>Já entregou resultado com um time que não reportava para ele</div><div>Tem exemplo de decisão que estava fora da própria alçada e conta como contornou</div><div>Consegue dizer o que parou de fazer para abrir espaço para IA</div><div>Fala de time de 5 a 15 pessoas, não de transformação corporativa</div><div>Aceita contar a parte que não funcionou</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">HO 01</span><span class="dt">21/09</span><h3>Faça em 20 minutos o que hoje te toma 6 horas</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem constrói ao vivo sem travar.</div><div class="chklist"><div>Cria skill ou agente na frente da turma, do zero, em menos de 20 minutos</div><div>Improvisa quando o aluno erra o caminho, sem perder a sala</div><div>Conduz sala com todos de tela aberta, não aula expositiva</div><div>Fecha a sessão com o artefato pronto na mão do aluno</div><div>Tem plano B para computador corporativo que bloqueia instalação</div></div></div>
+      </div>
+      <div class="pf done">
+        <div class="pf-h"><span class="cd2">EC 02</span><span class="dt">28/09</span><h3>O trabalho de ser humano</h3></div>
+        <div class="pf-b"><div class="fix">Piero Franceschi.<span>Único convidado que a ementa nomeia. Gravou as duas aulas que dão nome ao módulo, então o ao vivo é continuidade direta do gravado.</span></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">HO 02</span><span class="dt">05/10</span><h3>Do mapa ao alvo</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem escolhe alvo em processo alheio, ao vivo.</div><div class="chklist"><div>Já mapeou processo real e escolheu por onde começar</div><div>Aplica impacto, viabilidade e urgência no escopo de outra pessoa, na hora</div><div>Consegue dizer "esse não é um bom candidato" e sustentar o porquê</div><div>Aguenta 15 escopos diferentes na mesma sessão sem virar consultoria individual</div><div>Sai da sessão com um alvo escrito por aluno</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">EC 03</span><span class="dt">19/10</span><h3>Quem faz o quê quando a IA entra</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem redesenhou a divisão de trabalho de um time com IA dentro.</div><div class="chklist"><div>Tem o antes e o depois por etapa de processo, não só o resultado</div><div>Sabe dizer onde manteve o humano e por quê</div><div>Tem número: horas liberadas, custo evitado ou erro reduzido</div><div>Definiu alçada, ou seja, o que a IA decide sozinha</div><div>Consegue falar de ROI em escala pequena, sem business case corporativo</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">CHECK</span><span class="dt">26/10</span><h3>Checkpoint</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem resolve acesso e ferramenta na hora.</div><div class="chklist"><div>Debuga permissão, login e bloqueio corporativo ao vivo</div><div>Olha o alvo de cada aluno e diz se está pronto para construir</div><div>É a mesma pessoa que conduz o HO 03, para não repetir diagnóstico</div><div>Tem paciência para sessão sem conteúdo novo</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">HO 03</span><span class="dt">09/11</span><h3>Seu primeiro agente conectado à operação real</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem já colocou agente em operação, não em demo.</div><div class="chklist"><div>Conecta agente a sistema real ao vivo, com conector ou MCP</div><div>Sabe o que fazer quando a permissão falha na frente de todos</div><div>Já viu agente rodando em produção e conta o que quebrou</div><div>Tem caminho alternativo pronto para quem não conseguir instalar nada</div><div>Garante que ninguém sai da sessão sem um agente rodando</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">EC 04</span><span class="dt">16/11</span><h3>O acordo com o time</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem já teve a conversa difícil com o time.</div><div class="chklist"><div>Conduziu a conversa de metas e tempo liberado depois da IA entrar</div><div>Tem caso de resistência que não virou adesão, e conta o que fez</div><div>Fala de performance e avaliação individual sem eufemismo</div><div>Não vende harmonia: conta o atrito e o custo dele</div><div>Tem pessoa concreta na história, não perfil genérico</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">EC 05</span><span class="dt">23/11</span><h3>Cultura AI First: seu time usando IA todo dia</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem tem time usando IA há pelo menos seis meses.</div><div class="chklist"><div>Mostra o ritual que sustenta o uso, não o discurso de cultura</div><div>Tem experimento barato que deu errado e o que aprendeu com ele</div><div>Sabe contar o momento em que a adoção caiu e como recuperou</div><div>Consegue mostrar como mede uso, não só como incentiva</div><div>Fala de time pequeno, não de programa de inovação da empresa</div></div></div>
+      </div>
+      <div class="pf ">
+        <div class="pf-h"><span class="cd2">HO 04</span><span class="dt">30/11</span><h3>As regras do jogo + fechamento</h3></div>
+        <div class="pf-b"><div class="need">Precisamos de quem escreveu regra de uso para time pequeno.</div><div class="chklist"><div>Escreveu regra de uso de IA para uma equipe, não política corporativa</div><div>Tem critério de suspensão definido: quando desliga o agente</div><div>Sabe definir alçada, ou seja, o que a IA decide sozinha</div><div>Conduz o aluno a fechar o plano, não a começar outro</div><div>Consegue encerrar um programa, com o peso que a última sessão pede</div></div></div>
+      </div>
+    <div class="note">
+      <b>Dois já resolvidos.</b> O kick-off fica com o time interno, e o EC 02 é o Piero Franceschi, o
+      único convidado que a ementa nomeia. Os outros nove seguem o checklist, por ordem de data.
+    </div>
+    <div class="note warn">
+      <b>Três encontros pedem perfil de construtor</b> (HO 01, checkpoint e HO 03) e provavelmente saem do
+      time interno, porque exigem alguém que debuga ao vivo. Os cinco estudos de caso pedem perfil de
+      mercado, com caso próprio e disposição de contar o que deu errado.
+    </div>
+  </div>
+</section>
+
+<!-- ══════ AGENDA ══════ -->
+<section class="pane" id="p-age">
+  <div class="eyebrow">Guia · Agenda</div>
+  <h1>O que precisa ser<br><span>decidido</span></h1>
+  <p class="lead">Oito itens, em ordem de urgência para a turma de 08/09. Os quatro primeiros travam o início.</p>
+  <div class="blk">
+    <div class="ag">
+      <div class="ar" style="background:rgba(255,255,255,.03)">
+        <div class="ar-n" style="font-size:16px;letter-spacing:.09em">#</div>
+        <div class="ar-t" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">DECISÃO</div>
+        <div class="ar-p" style="font-size:16px;color:var(--dim2);letter-spacing:.09em">PRAZO</div>
+        <div class="ar-w" style="font-size:16px;color:var(--dim2);letter-spacing:.09em;font-weight:700">FRENTE</div>
+      </div>
+      <div class="ar urg"><div class="ar-n">1</div>
+        <div class="ar-t">Convidado do EC 01<span>Primeira sessão que conta presença. Sem ele, a semana 1 não abre</span></div>
+        <div class="ar-p">05/09</div><div class="ar-w">contratação</div></div>
+      <div class="ar urg"><div class="ar-n">2</div>
+        <div class="ar-t">Roteiro do Módulo 0<span>Único conteúdo regravável. Precisa estar no ar antes do kick-off</span></div>
+        <div class="ar-p">03/09</div><div class="ar-w">produção</div></div>
+      <div class="ar urg"><div class="ar-n">3</div>
+        <div class="ar-t">Opção A ou B do calendário<span>Muda a data de fechamento de 30/11 para 16/11 e o dia de duas sessões</span></div>
+        <div class="ar-p">01/09</div><div class="ar-w">calendário</div></div>
+      <div class="ar urg"><div class="ar-n">4</div>
+        <div class="ar-t">Camada opcional entra ou sai<span>Define se a carga horária de venda é 13h43 ou 17h24</span></div>
+        <div class="ar-p">01/09</div><div class="ar-w">produto</div></div>
+      <div class="ar "><div class="ar-n">5</div>
+        <div class="ar-t">Rótulo do passo 02<span>A ementa chama o módulo de "Contexto" e o passo de "Mercado". Divergência em 4 dos 5 módulos</span></div>
+        <div class="ar-p">03/09</div><div class="ar-w">nomenclatura</div></div>
+      <div class="ar "><div class="ar-n">6</div>
+        <div class="ar-t">Perfil dos 7 encontros em aberto<span>Um checklist por encontro na guia Professores. Prioridade pela data</span></div>
+        <div class="ar-p">rolling</div><div class="ar-w">casting</div></div>
+      <div class="ar "><div class="ar-n">7</div>
+        <div class="ar-t">Onde entra o ROI<span>Conteúdo ao vivo, cabe no EC 03 ou no HO 03. Só precisa constar no roteiro</span></div>
+        <div class="ar-p">19/10</div><div class="ar-w">ementa</div></div>
+      <div class="ar "><div class="ar-n">8</div>
+        <div class="ar-t">Corrigir 3 nomes na planilha<span>Silas Serpa, Caio Montagner e Gustavo Torrente estão errados na fonte de gestão</span></div>
+        <div class="ar-p">—</div><div class="ar-w">dados</div></div>
+    </div>
+    <div class="note">
+      <b>O caminho crítico é o convidado do EC 01.</b> A primeira sessão que conta presença é 14/09, e
+      qualquer atraso aí empurra a turma inteira. É o único item que não tem contorno interno.
+    </div>
+  </div>
+</section>
+
+<footer>
+  Estrutura aula por aula e auditoria de dependência em <code>estrutura-ai-leadership.html</code>.
+  Grade e calendário detalhados em <code>grade-turma-08-09.html</code>.
+  Durações somadas das 52 transcrições em <code>06-transcription/</code>.
+</footer>
+
+</div>
+<script>
+function go(id){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.getElementById('p-'+id).classList.add('on');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on', b.dataset.t===id));
+  window.scrollTo({top:0,behavior:'instant'});
+  history.replaceState(null,'','#'+id);
+}
+if(location.hash) go(location.hash.slice(1));
+</script>
+</body></html>
