@@ -8,6 +8,7 @@ Documentação da turma com kick-off em **08/09/2026**. Três páginas HTML, tod
 | [`ai-leadership-apresentacao.html`](ai-leadership-apresentacao.html) | **Comece por aqui.** Cinco guias: Panorama, Ementa, Calendário, Professores e Agenda | Quem não conhece o programa |
 | [`grade-turma-08-09.html`](grade-turma-08-09.html) | Grade da turma: o que sai, o módulo do Piero, as duas opções de calendário e os 11 encontros com candidato a professor | Quem vai operar a turma |
 | [`estrutura-ai-leadership.html`](estrutura-ai-leadership.html) | Estrutura aula por aula das 52 gravações, com a auditoria de dependência entre elas | Quem vai montar o curso na plataforma |
+| [`calendario-ai-leadership.tsv`](calendario-ai-leadership.tsv) | As 14 linhas do calendário em 13 colunas, prontas para colar no Google Sheets | Quem controla agenda e casting |
 
 ## O programa em uma tela
 
